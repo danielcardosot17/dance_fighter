@@ -14,6 +14,16 @@ public class AudioManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void Pause()
+    {
+        audioSource.Pause();
+    }
+    
+    public void UnPause()
+    {
+        audioSource.UnPause();
+    }
+
     public void Play(int soundIndex)
     {
         if(sounds.Count == 0) return;

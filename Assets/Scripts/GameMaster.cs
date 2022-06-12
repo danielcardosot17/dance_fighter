@@ -11,6 +11,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private BeatManager beatManager;
     
     private FightTimer fightTimer;
+    private bool isPlaying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,14 +24,15 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(hasStarted)
-        // {
+        if(isPlaying)
+        {
 
-        // }
+        }
     }
 
     public void StartGame()
     {
+        isPlaying = true;
         startMenuCanvas.enabled = false;
         var randomIndex = ChooseRandomMusicIndex();
         StartRadomMusic(randomIndex);
@@ -63,9 +65,45 @@ public class GameMaster : MonoBehaviour
        return UnityEngine.Random.Range(0, audioManager.GetSoundCount()); 
     }
 
-    private void EndGame()
+    public void EndGame()
     {
+        PauseGame();
+        var winner = GetWinner();
+        var loser = GetLoser();
+        PlayWinnerAnimation(winner);
+        PlayLoserAnimation(loser);
+        WriteWinnerInEndCanvas();
+        ShowEndMenuCanvas();
+    }
 
+    private Animator GetLoser()
+    {
+        return new Animator();
+    }
+
+    private Animator GetWinner()
+    {
+        return new Animator();
+    }
+
+    private void ShowEndMenuCanvas()
+    {
+        
+    }
+
+    private void WriteWinnerInEndCanvas()
+    {
+        
+    }
+
+    private void PlayLoserAnimation(Animator loser)
+    {
+        
+    }
+
+    private void PlayWinnerAnimation(Animator winner)
+    {
+        
     }
 
     private void ResetVariables()
@@ -73,8 +111,17 @@ public class GameMaster : MonoBehaviour
 
     }
 
-    public void PlayAgain()
+    public void PauseGame()
     {
+        isPlaying = false;
+        audioManager.Pause();
+        fightTimer.PauseTimer();
+    }
 
+    public void UnPauseGame()
+    {
+        isPlaying = true;
+        audioManager.UnPause();
+        fightTimer.StartTimer();
     }
 }

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AttackController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameEventSO pauseGameEvent;
+    [SerializeField] private GameEventSO unPauseGameEvent;
     private PlayerInputActions playerInputActions;
     private Animator playerAnimator;
     private bool isAttacking = false;
@@ -17,9 +19,35 @@ public class AttackController : MonoBehaviour
     
     private void OnEnable() {
         playerInputActions.Player.Attack.performed += Attack;
+        playerInputActions.Player.PauseGame.performed += PauseGame;
         playerInputActions.Player.Enable();
+        playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
+        playerInputActions.UI.Disable();
     }
 
+    private void PauseGame(InputAction.CallbackContext obj)
+    {
+        pauseGameEvent.Raise();
+        DisablePlayerInput();
+    }
+    private void UnPauseGame(InputAction.CallbackContext obj)
+    {
+        unPauseGameEvent.Raise();
+        EnablePlayerInput();
+    }
+
+    public void DisablePlayerInput()
+    {
+        playerInputActions.Player.Disable();
+        playerInputActions.UI.Enable();
+    }
+
+    public void EnablePlayerInput()
+    {
+        playerInputActions.Player.Enable();
+        playerInputActions.UI.Disable();
+    }
+    
     private void Attack(InputAction.CallbackContext obj)
     {
         isAttacking = !isAttacking;
