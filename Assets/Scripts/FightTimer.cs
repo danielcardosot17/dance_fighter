@@ -7,23 +7,42 @@ using UnityEngine;
 public class FightTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameEventSO endGameByTimeEvent;
+    private bool isTimer = false;
+    private float timerLength = 0.0f;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(isTimer)
+        {
+            DisplayTime();
+            timerLength -= Time.deltaTime;
+            if(timerLength <= 0)
+            {
+                timerLength = 0.0f;
+                endGameByTimeEvent.Raise();
+            }
+        }
     }
-    public string GetTotalTimeString()
+
+    public void StartTimer()
     {
-        return TimeSpan.FromSeconds(0).ToString("mm\\:ss");
+        isTimer = true;
     }
+
+    public void PauseTimer()
+    {
+        isTimer = false;
+    }
+    
     private void DisplayTime()
     {
-        timerText.text = TimeSpan.FromSeconds(0).ToString("mm\\:ss");
+        timerText.text = TimeSpan.FromSeconds(timerLength).ToString("mm\\:ss");
+    }
+
+    public void SetTimerLength(float length)
+    {
+        timerLength = length;
     }
 }
