@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        var randomIndex = ChooseRandomMusicIndex();
+        Play(randomIndex);
     }
 
     public void Pause()
@@ -24,6 +26,10 @@ public class AudioManager : MonoBehaviour
         audioSource.UnPause();
     }
 
+    public void Stop()
+    {
+        audioSource.Stop();
+    }
     public void Play(int soundIndex)
     {
         if(sounds.Count == 0) return;
@@ -42,11 +48,16 @@ public class AudioManager : MonoBehaviour
     }
     public float GetCurrentSoundLength()
     {
-        return currentSound.clip.length;
+        return currentSound.loop ? 120.0f : currentSound.clip.length;
     }
 
     public int GetSoundCount()
     {
         return sounds.Count;
+    }
+
+    private int ChooseRandomMusicIndex()
+    {
+       return UnityEngine.Random.Range(0, GetSoundCount()); 
     }
 }
