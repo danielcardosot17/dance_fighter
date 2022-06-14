@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private AudioSource audioSource;
-    [NonReorderable] [SerializeField] private List<Sound> sounds;
+    [SerializeField] private List<Sound> sounds;
     private Sound currentSound;
 
     // Start is called before the first frame update
@@ -45,6 +45,10 @@ public class AudioManager : MonoBehaviour
     public float GetCurrentSoundBpm()
     {
         return currentSound.bpm;
+    }
+    public float GetCurrentSoundInitialBeatTime()
+    {
+        return currentSound.initialBeatTime;
     }
     public float GetCurrentSoundLength()
     {

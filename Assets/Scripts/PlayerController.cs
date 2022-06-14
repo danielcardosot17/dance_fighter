@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameEventSO pauseGameEvent;
     [SerializeField] private GameEventSO unPauseGameEvent;
+    [SerializeField] private GameEventSO beatSyncEvent;
     private PlayerInputActions playerInputActions;
     private Animator playerAnimator;
     private bool isAttacking = false;
@@ -19,10 +20,16 @@ public class PlayerController : MonoBehaviour
     
     private void OnEnable() {
         playerInputActions.Player.Attack.performed += Attack;
+        playerInputActions.Player.Beat.performed += BeatSync;
         playerInputActions.Player.PauseGame.performed += PauseGame;
         // playerInputActions.Player.Enable();
         playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
         // playerInputActions.UI.Disable();
+    }
+
+    private void BeatSync(InputAction.CallbackContext obj)
+    {
+        beatSyncEvent.Raise();
     }
 
     private void PauseGame(InputAction.CallbackContext obj)

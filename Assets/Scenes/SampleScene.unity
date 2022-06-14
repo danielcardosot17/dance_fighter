@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.4
+  m_fontSize: 38.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1501,6 +1501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dc0cd5ee8ede449adca89398b09a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 0}
+  beatCenter: {fileID: 0}
 --- !u!1 &833719093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1649,7 @@ GameObject:
   - component: {fileID: 847089701}
   - component: {fileID: 847089703}
   - component: {fileID: 847089702}
+  - component: {fileID: 847089704}
   m_Layer: 5
   m_Name: Center
   m_TagString: Untagged
@@ -1712,6 +1715,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 847089700}
   m_CullTransparentMesh: 1
+--- !u!95 &847089704
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847089700}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38851de1372c5684d85fbd4790e54235, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &961781859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,7 +2438,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26340
+  m_Name: pb_Mesh26344
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3472,22 +3495,6 @@ MonoBehaviour:
   - name: 16446__kkz__treaspassa
     category: 
     clip: {fileID: 8300000, guid: aac4817f563f78141963295f02dc25e4, type: 3}
-    priority: 128
-    volume: 1
-    pitch: 1
-    loop: 1
-    bpm: 10
-  - name: 68991__deleted-user-984625__darkbeat76bpm
-    category: 
-    clip: {fileID: 8300000, guid: f2533a03cdedf6b43ab660b751720485, type: 3}
-    priority: 128
-    volume: 1
-    pitch: 1
-    loop: 1
-    bpm: 10
-  - name: 510946__theoter__hip-hop-beat
-    category: 
-    clip: {fileID: 8300000, guid: b39e39b3fa4eedf4eaae1a243a473558, type: 3}
     priority: 128
     volume: 1
     pitch: 1

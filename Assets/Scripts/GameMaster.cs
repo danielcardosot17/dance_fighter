@@ -46,7 +46,7 @@ public class GameMaster : MonoBehaviour
         var randomIndex = ChooseRandomMusicIndex();
         ResetVariables();
         StartRadomMusic(randomIndex);
-        StartBeatScroller(audioManager.GetCurrentSoundBpm());
+        StartBeatScroller(audioManager.GetCurrentSoundBpm(), audioManager.GetCurrentSoundInitialBeatTime(),audioManager.GetCurrentSoundLength());
         SetTimerLength(audioManager.GetCurrentSoundLength());
         ResetCountdownTimer();
         StartTimer();
@@ -80,8 +80,9 @@ public class GameMaster : MonoBehaviour
         audioManager.Play(randomIndex);
     }
 
-    private void StartBeatScroller(float soundBpm)
+    private void StartBeatScroller(float soundBpm, float initialBeatTime, float musicLength)
     {
+        beatManager.StartBeatScroller(soundBpm, initialBeatTime, musicLength);
     }
 
     private void StartTimer()

@@ -20,4 +20,5 @@ public class Sound
     public bool loop;
     
     public float bpm;
+    public float initialBeatTime;
 }
