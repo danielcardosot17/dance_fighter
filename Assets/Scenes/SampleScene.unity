@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.35
+  m_fontSize: 47.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1485,10 +1485,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88a9b5e30719a843802a7c2081771f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b72795e59e8a4ea41b5e8a1cab551f0b, type: 2}
+  Event: {fileID: 11400000, guid: acd9562cae7d95d40956ee9bdd7c9faa, type: 2}
   Response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 809604646}
+        m_TargetAssemblyTypeName: BeatManager, Assembly-CSharp
+        m_MethodName: BeatCenterAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &809604646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,8 +1513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4dc0cd5ee8ede449adca89398b09a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
-  beatCenter: {fileID: 0}
+  beatCenterAnimator: {fileID: 847089704}
+  pulseBeatEvent: {fileID: 11400000, guid: acd9562cae7d95d40956ee9bdd7c9faa, type: 2}
 --- !u!1 &833719093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,6 +2811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseGameEvent: {fileID: 11400000, guid: f976d9c37f9206943a5d0f0118ae134f, type: 2}
   unPauseGameEvent: {fileID: 11400000, guid: d3c1d1a8d8205c048a087ec2655dc7c6, type: 2}
+  beatSyncEvent: {fileID: 0}
 --- !u!114 &1402028187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3483,7 +3496,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
-    bpm: 10
+    bpm: 60
+    initialBeatTime: 0
   - name: Black Ant - government funded weed
     category: 
     clip: {fileID: 8300000, guid: ceb36e2c21794b94193fc02f388e76c6, type: 3}
@@ -3491,7 +3505,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
-    bpm: 10
+    bpm: 60
+    initialBeatTime: 0
   - name: 16446__kkz__treaspassa
     category: 
     clip: {fileID: 8300000, guid: aac4817f563f78141963295f02dc25e4, type: 3}
@@ -3499,7 +3514,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
-    bpm: 10
+    bpm: 60
+    initialBeatTime: 0
   - name: 631480__tattoo-beatz__tattoo-beatz-reggae-beats
     category: 
     clip: {fileID: 8300000, guid: 8f30fdb155af44f4d820339708396a31, type: 3}
@@ -3507,7 +3523,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
-    bpm: 10
+    bpm: 60
+    initialBeatTime: 0
   - name: 635904__frys3r__easin-in-87bpm
     category: 
     clip: {fileID: 8300000, guid: d6acca75e0c21754587206e6c08ec370, type: 3}
@@ -3515,7 +3532,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
-    bpm: 10
+    bpm: 60
+    initialBeatTime: 0
 --- !u!1 &1708358049
 GameObject:
   m_ObjectHideFlags: 0
