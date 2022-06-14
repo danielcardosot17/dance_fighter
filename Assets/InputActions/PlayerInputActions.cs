@@ -30,7 +30,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""74c6c2db-3f32-4297-bc97-538e932a63a6"",
+                    ""id"": ""8207ffa1-2fc1-4a97-a475-4c503deec848"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -39,7 +39,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Beat"",
                     ""type"": ""Button"",
-                    ""id"": ""d0e7fbe6-a9f7-474e-a3a6-1335985f3118"",
+                    ""id"": ""bdbf3829-a477-4c2d-87aa-6d5cd9a43d60"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -48,7 +48,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""PauseGame"",
                     ""type"": ""Button"",
-                    ""id"": ""def791de-0d8a-44fe-beda-0df6f8d479ee"",
+                    ""id"": ""16549149-1f96-41da-a07f-2650a604d5ee"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -58,44 +58,44 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""792464d8-53e1-436e-816d-1e5b0bf0878a"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""id"": ""c885cea3-bf25-4244-9349-948c712f00ba"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Player2"",
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""20dae9a1-128e-440a-aa75-927980a2bb48"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""id"": ""3f7ba7c5-591c-43d1-9672-dc3c25e5d7c6"",
+                    ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Player2"",
                     ""action"": ""Beat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""342763b4-9f89-48c8-a086-c6ae1aaa63c5"",
+                    ""id"": ""8512a95f-b821-4719-86eb-fff6045e8491"",
                     ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Player2"",
                     ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ef249baf-5de5-4b7c-8ee6-f5829925a68a"",
+                    ""id"": ""fb960e60-3712-4fa2-9abe-60830429f680"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Player2"",
                     ""action"": ""PauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -109,7 +109,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""UnPauseGame"",
                     ""type"": ""Button"",
-                    ""id"": ""63546b39-a4fb-4f13-875a-94dff5c9c463"",
+                    ""id"": ""fd9e272e-a706-477b-891f-3ce60c3ef3e4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -119,22 +119,22 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""6812f328-3b29-4922-8ed8-718cdc8ac272"",
+                    ""id"": ""38bb4dbc-5b7d-45cf-bee8-a6546c8e28d4"",
                     ""path"": ""<Keyboard>/p"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Player2"",
                     ""action"": ""UnPauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6e0ecef3-86c8-4bde-a8be-585a17a2869a"",
+                    ""id"": ""4db5e3eb-f131-4521-afc5-3a12d04ebcd2"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Player2"",
                     ""action"": ""UnPauseGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -144,8 +144,19 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Keyboard"",
-            ""bindingGroup"": ""Keyboard"",
+            ""name"": ""Player1"",
+            ""bindingGroup"": ""Player1"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Player2"",
+            ""bindingGroup"": ""Player2"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
@@ -301,13 +312,22 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
-    private int m_KeyboardSchemeIndex = -1;
-    public InputControlScheme KeyboardScheme
+    private int m_Player1SchemeIndex = -1;
+    public InputControlScheme Player1Scheme
     {
         get
         {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
-            return asset.controlSchemes[m_KeyboardSchemeIndex];
+            if (m_Player1SchemeIndex == -1) m_Player1SchemeIndex = asset.FindControlSchemeIndex("Player1");
+            return asset.controlSchemes[m_Player1SchemeIndex];
+        }
+    }
+    private int m_Player2SchemeIndex = -1;
+    public InputControlScheme Player2Scheme
+    {
+        get
+        {
+            if (m_Player2SchemeIndex == -1) m_Player2SchemeIndex = asset.FindControlSchemeIndex("Player2");
+            return asset.controlSchemes[m_Player2SchemeIndex];
         }
     }
     public interface IPlayerActions

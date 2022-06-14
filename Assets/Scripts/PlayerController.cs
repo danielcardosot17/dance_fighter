@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputActions playerInputActions;
     private Animator playerAnimator;
     private bool isAttacking = false;
+    private int playerId;
 
     private void Awake() {
         playerInputActions = new PlayerInputActions();
@@ -22,9 +23,7 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Attack.performed += Attack;
         playerInputActions.Player.Beat.performed += BeatSync;
         playerInputActions.Player.PauseGame.performed += PauseGame;
-        // playerInputActions.Player.Enable();
         playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
-        // playerInputActions.UI.Disable();
     }
 
     private void BeatSync(InputAction.CallbackContext obj)
@@ -74,17 +73,5 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = !isAttacking;
         playerAnimator.SetBool("isAttacking", isAttacking);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

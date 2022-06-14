@@ -10,6 +10,13 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private Animator player1BeatAnimator;
     [SerializeField] private Animator player2BeatAnimator;
     [SerializeField] private GameEventSO pulseBeatEvent;
+    private List<Animator> playerBeatAnimatorList;
+
+    private void Start() {
+        playerBeatAnimatorList = new List<Animator>();
+        playerBeatAnimatorList.Add(player1BeatAnimator);
+        playerBeatAnimatorList.Add(player2BeatAnimator);
+    }
 
     // Update is called once per frame
     void Update()
@@ -52,15 +59,10 @@ public class BeatManager : MonoBehaviour
         beatCenterAnimator.SetTrigger("PulseBeat");
         Debug.Log("Beat");
     }
-    public void Player1BeatAnimation()
-    {
-        player1BeatAnimator.SetTrigger("PulseBeat");
-        Debug.Log("Player 1 Beat");
-    }
 
-    public void Player2BeatAnimation()
+    public void PlayerBeatAnimation(int playerId)
     {
-        player2BeatAnimator.SetTrigger("PulseBeat");
-        Debug.Log("Player 2 Beat");
+        playerBeatAnimatorList[playerId].SetTrigger("PulseBeat");
+        Debug.Log("Player " + playerId.ToString() + " Beat");
     }
 }

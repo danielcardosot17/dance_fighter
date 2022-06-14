@@ -16,7 +16,9 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameEventSO enableUIInputEvent;
     [SerializeField] private GameEventSO pausePlayerAnimationEvent;
     [SerializeField] private GameEventSO unPausePlayerAnimationEvent;
-    
+
+
+    private List<PlayerController> playerList;
     private FightTimer fightTimer;
     private bool isPlaying = false;
 
