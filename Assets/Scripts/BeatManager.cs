@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class BeatManager : MonoBehaviour
 {
     [SerializeField] private Animator beatCenterAnimator;
+    [SerializeField] private Animator player1BeatAnimator;
+    [SerializeField] private Animator player2BeatAnimator;
     [SerializeField] private GameEventSO pulseBeatEvent;
 
     // Update is called once per frame
@@ -49,5 +51,16 @@ public class BeatManager : MonoBehaviour
     {
         beatCenterAnimator.SetTrigger("PulseBeat");
         Debug.Log("Beat");
+    }
+    public void Player1BeatAnimation()
+    {
+        player1BeatAnimator.SetTrigger("PulseBeat");
+        Debug.Log("Player 1 Beat");
+    }
+
+    public void Player2BeatAnimation()
+    {
+        player2BeatAnimator.SetTrigger("PulseBeat");
+        Debug.Log("Player 2 Beat");
     }
 }
