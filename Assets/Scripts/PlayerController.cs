@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public GameEventSO PauseGameEvent { get => pauseGameEvent; set => pauseGameEvent = value; }
     private GameEventSO unPauseGameEvent;
     public GameEventSO UnPauseGameEvent { get => unPauseGameEvent; set => unPauseGameEvent = value; }
-    private PlayerInputActions playerInputActions;
+    private InputActionMap playerActionMap;
+    private InputActionMap uiActionMap;
     private Animator playerAnimator;
     private bool isAttacking = false;
     private int playerId;
@@ -18,10 +19,10 @@ public class PlayerController : MonoBehaviour
     private GameEventSO beatSyncEvent;
     public GameEventSO BeatSyncEvent { get => beatSyncEvent; set => beatSyncEvent = value; }
 
-    // private void Awake() {
-    //     playerInputActions = new PlayerInputActions();
-    //     playerAnimator = GetComponentInChildren<Animator>();
-    // }
+    private void Awake() {
+        // playerInputActions = new PlayerInputActions();
+        playerAnimator = GetComponentInChildren<Animator>();
+    }
     
     // private void OnEnable() {
     //     playerInputActions.Player.Attack.performed += Attack;
@@ -46,22 +47,24 @@ public class PlayerController : MonoBehaviour
 
     public void DisablePlayerInput()
     {
-        playerInputActions.Player.Disable();
+       playerActionMap.Disable();
     }
 
     public void EnablePlayerInput()
     {
-        playerInputActions.Player.Enable();
+        Debug.Log("BBBBBBBBBBBBBBBBBB");
+        playerActionMap.Enable();
     }
     
     public void DisableUIInput()
     {
-        playerInputActions.UI.Disable();
+        uiActionMap.Disable();
     }
 
     public void EnableUIInput()
     {
-        playerInputActions.UI.Enable();
+        Debug.Log("AAAAAAAAAAAAAAAAAAA");
+        uiActionMap.Enable();
     }
 
     public void PauseAnimation()
@@ -81,15 +84,21 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize()
     {
-        playerAnimator = GetComponentInChildren<Animator>();
         var playerInput = GetComponent<PlayerInput>();
-        Debug.Log("playerInput.inputIsActive");
-        Debug.Log(playerInput.inputIsActive);
+
+        playerActionMap = playerInput.actions.FindActionMap("Player");
+        uiActionMap = playerInput.actions.FindActionMap("UI");
         
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Player.Attack.performed += Attack;
-        playerInputActions.Player.Beat.performed += BeatSync;
-        playerInputActions.Player.PauseGame.performed += PauseGame;
-        playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
+        playerActionMap.FindAction("Attack").performed += Attack;
+        playerActionMap.FindAction("Beat").performed += BeatSync;
+        playerActionMap.FindAction("PauseGame").performed += PauseGame;
+        uiActionMap.FindAction("UnPauseGame").performed += UnPauseGame;
+        DisableUIInput();
+        DisablePlayerInput();
+
+        // playerInputActions.Player.Attack.performed += Attack;
+        // playerInputActions.Player.Beat.performed += BeatSync;
+        // playerInputActions.Player.PauseGame.performed += PauseGame;
+        // playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
     }
 }
