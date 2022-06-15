@@ -52,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
     public void EnablePlayerInput()
     {
-        Debug.Log("BBBBBBBBBBBBBBBBBB");
         playerActionMap.Enable();
     }
     
@@ -63,7 +62,6 @@ public class PlayerController : MonoBehaviour
 
     public void EnableUIInput()
     {
-        Debug.Log("AAAAAAAAAAAAAAAAAAA");
         uiActionMap.Enable();
     }
 
@@ -85,6 +83,7 @@ public class PlayerController : MonoBehaviour
     public void Initialize()
     {
         var playerInput = GetComponent<PlayerInput>();
+        playerAnimator = GetComponentInChildren<Animator>();
 
         playerActionMap = playerInput.actions.FindActionMap("Player");
         uiActionMap = playerInput.actions.FindActionMap("UI");
@@ -100,5 +99,14 @@ public class PlayerController : MonoBehaviour
         // playerInputActions.Player.Beat.performed += BeatSync;
         // playerInputActions.Player.PauseGame.performed += PauseGame;
         // playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
+    }
+
+    private void OnDisable() {
+        playerActionMap.FindAction("Attack").performed -= Attack;
+        playerActionMap.FindAction("Beat").performed -= BeatSync;
+        playerActionMap.FindAction("PauseGame").performed -= PauseGame;
+        uiActionMap.FindAction("UnPauseGame").performed -= UnPauseGame;
+        DisableUIInput();
+        DisablePlayerInput();
     }
 }

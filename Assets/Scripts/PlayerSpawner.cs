@@ -41,9 +41,7 @@ public class PlayerSpawner : MonoBehaviour
             var newPlayerGO = PlayerInput.Instantiate(playerPrefabs[randomInt], controlScheme: controlSchemeList[i], pairWithDevice: Keyboard.current).gameObject;
             newPlayerGO.transform.position = spawnPoints[i].position;
             newPlayerGO.transform.rotation = spawnPoints[i].rotation;
-            // var newPlayerGO = Instantiate(playerPrefabs[randomInt], spawnPoints[i].position, spawnPoints[i].rotation);
             AddPlayerController(newPlayerGO, i);
-            // AddPlayerInputEvents(newPlayerGO, i);
             AddAnimatorController(newPlayerGO);
             AddHealthController(newPlayerGO);
             AddGameEventListeners(newPlayerGO);
@@ -55,16 +53,6 @@ public class PlayerSpawner : MonoBehaviour
         var animator = newPlayerGO.GetComponentInChildren<Animator>();
         animator.runtimeAnimatorController = animatorController;
     }
-
-    // private void AddPlayerInputEvents(GameObject newPlayerGO, int playerId)
-    // {
-    //     var playerInput = newPlayerGO.GetComponent<PlayerInput>();
-    //     var newPlayer = newPlayerGO.GetComponent<PlayerController>();
-    //     playerInput.actions.FindActionMap("Player").FindAction("Attack").performed += newPlayer.Attack;
-    //     playerInput.actions.FindActionMap("Player").FindAction("Beat").performed += newPlayer.BeatSync;
-    //     playerInput.actions.FindActionMap("Player").FindAction("PauseGame").performed += newPlayer.PauseGame;
-    //     playerInput.actions.FindActionMap("UI").FindAction("UnPauseGame").performed += newPlayer.UnPauseGame;
-    // }
 
     private void AddGameEventListeners(GameObject newPlayerGO)
     {

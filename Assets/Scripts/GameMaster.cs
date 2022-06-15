@@ -67,7 +67,6 @@ public class GameMaster : MonoBehaviour
 
     public void StartPlayers()
     {
-        Debug.Log("StartPlayers");
         disableUIInputEvent.Raise();
         enablePlayerInputEvent.Raise();
     }

@@ -10,23 +10,24 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private Animator player1BeatAnimator;
     [SerializeField] private Animator player2BeatAnimator;
     [SerializeField] private GameEventSO pulseBeatEvent;
+    [SerializeField] [Range(0.0f, 0.1f)] private float beatDifferencePercentage;
     private List<Animator> playerBeatAnimatorList;
+    private float musicBpm = 0;
+    private float currentBeatTime = 0;
+    private float nextBeatTime = 0;
 
     private void Start() {
         playerBeatAnimatorList = new List<Animator>();
         playerBeatAnimatorList.Add(player1BeatAnimator);
         playerBeatAnimatorList.Add(player2BeatAnimator);
     }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void StartBeatScroller(float soundBpm, float initialBeatTime, float musicLength)
     {
         StartBeatCenter(soundBpm, initialBeatTime, musicLength);
+        musicBpm = soundBpm;
     }
 
     private void StartBeatCenter(float soundBpm, float initialBeatTime, float musicLength)
@@ -59,9 +60,42 @@ public class BeatManager : MonoBehaviour
         beatCenterAnimator.SetTrigger("PulseBeat");
     }
 
+    public void MarkBeatCenterTime()
+    {
+        currentBeatTime = Time.time;
+        nextBeatTime = currentBeatTime + 60/musicBpm;
+    }
+
     public void PlayerBeatAnimation(int playerId)
     {
         playerBeatAnimatorList[playerId].SetTrigger("PulseBeat");
-        Debug.Log("Player " + playerId.ToString() + " Beat");
+    }
+
+    public void CheckIfPlayerBeatIsOnTime(int playerId)
+    {
+        var playerBeatTime = Time.time;
+        var currentTimeDiff = Mathf.Abs(currentBeatTime - playerBeatTime);
+        var nextTimeDiff = Mathf.Abs(nextBeatTime - playerBeatTime);
+        
+        if((currentTimeDiff < (60/musicBpm) * beatDifferencePercentage) || (nextTimeDiff < (60/musicBpm) * beatDifferencePercentage))
+        {
+            OnTimeBeat(playerId);
+            Debug.Log("Player " + playerId.ToString() + " Beat on Time!");
+        }
+        else
+        {
+            NotOnTimeBeat(playerId);
+            Debug.Log("Player " + playerId.ToString() + " Beat WRONG!");
+        }
+    }
+
+    private void NotOnTimeBeat(int playerId)
+    {
+        
+    }
+
+    private void OnTimeBeat(int playerId)
+    {
+        
     }
 }

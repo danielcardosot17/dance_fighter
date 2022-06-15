@@ -931,7 +931,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26344
+  m_Name: pb_Mesh26340
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1194,6 +1194,94 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 809604646}
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CheckIfPlayerBeatIsOnTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BeatManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604647, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604648, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604648, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604648, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 809604646}
+    - target: {fileID: 809604648, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604648, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CheckIfPlayerBeatIsOnTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604648, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BeatManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 809604648, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440840, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440840, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440840, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 809604646}
+    - target: {fileID: 782474424795440840, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440840, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: MarkBeatCenterTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440840, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: BeatManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440840, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 782474424795440841, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
       propertyPath: m_RootOrder
       value: 5
