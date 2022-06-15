@@ -57,7 +57,6 @@ public class BeatManager : MonoBehaviour
     public void BeatCenterAnimation()
     {
         beatCenterAnimator.SetTrigger("PulseBeat");
-        Debug.Log("Beat");
     }
 
     public void PlayerBeatAnimation(int playerId)

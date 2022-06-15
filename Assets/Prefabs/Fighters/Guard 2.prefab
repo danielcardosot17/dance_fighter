@@ -285,6 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5052756281876905671}
+  - component: {fileID: -5516543095477610440}
   m_Layer: 0
   m_Name: Guard 2
   m_TagString: Untagged
@@ -308,6 +309,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5516543095477610440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5046357292227303657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a2b6ce21bd6f96c47b0d918174adfc53, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8207ffa1-2fc1-4a97-a475-4c503deec848
+    m_ActionName: Player/Attack[/Keyboard/m,/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bdbf3829-a477-4c2d-87aa-6d5cd9a43d60
+    m_ActionName: Player/Beat[/Keyboard/n,/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16549149-1f96-41da-a07f-2650a604d5ee
+    m_ActionName: Player/PauseGame[/Keyboard/p,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fd9e272e-a706-477b-891f-3ce60c3ef3e4
+    m_ActionName: UI/UnPauseGame[/Keyboard/p,/Keyboard/escape]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &5046360778653709337
 GameObject:
   m_ObjectHideFlags: 0

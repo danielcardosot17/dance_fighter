@@ -47,11 +47,33 @@
                 },
                 {
                     "name": "",
+                    "id": "c77d3bd2-c4ff-4a02-8432-7b5211229d8e",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player1",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "3f7ba7c5-591c-43d1-9672-dc3c25e5d7c6",
                     "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
                     "groups": "Player2",
+                    "action": "Beat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc719ef1-3413-4999-825d-f922ae95b100",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player1",
                     "action": "Beat",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -74,6 +96,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Player2",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "363b169f-bce3-453f-9eb3-ec943c3e2b19",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player1",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8728bd70-59a9-4a62-b62d-e8094e931177",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player1",
                     "action": "PauseGame",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -113,6 +157,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Player2",
+                    "action": "UnPauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b3f4e1f-25c9-4ca2-a8c2-20e967c7c1a5",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player1",
+                    "action": "UnPauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0888aeab-37dd-4a3a-88ed-a8fd14f5075f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Player1",
                     "action": "UnPauseGame",
                     "isComposite": false,
                     "isPartOfComposite": false

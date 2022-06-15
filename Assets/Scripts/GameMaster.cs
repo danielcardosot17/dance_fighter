@@ -8,8 +8,11 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private Canvas startMenuCanvas;
     [SerializeField] private Canvas endMenuCanvas;
     [SerializeField] private Canvas pauseGameCanvas;
+
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private BeatManager beatManager;
+    [SerializeField] private PlayerSpawner playerSpawner;
+
     [SerializeField] private GameEventSO disablePlayerInputEvent;
     [SerializeField] private GameEventSO enablePlayerInputEvent;
     [SerializeField] private GameEventSO disableUIInputEvent;
@@ -29,6 +32,7 @@ public class GameMaster : MonoBehaviour
         startMenuCanvas.gameObject.SetActive(true);
         endMenuCanvas.gameObject.SetActive(false);
         pauseGameCanvas.gameObject.SetActive(false);
+        playerSpawner.SpawnPlayers();
     }
 
     // Update is called once per frame
