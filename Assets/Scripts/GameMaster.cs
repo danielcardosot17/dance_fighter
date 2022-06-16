@@ -24,6 +24,7 @@ public class GameMaster : MonoBehaviour
     private List<PlayerController> playerList;
     private FightTimer fightTimer;
     private bool isPlaying = false;
+    private int chosenMusicIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +45,18 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    public void ChooseMusic(int musicIndex)
+    {
+        chosenMusicIndex = musicIndex;
+    }
+
     public void StartGame()
     {
         isPlaying = true;
         startMenuCanvas.gameObject.SetActive(false);
         endMenuCanvas.gameObject.SetActive(false);
-        var randomIndex = ChooseRandomMusicIndex();
         ResetVariables();
-        StartRadomMusic(randomIndex);
+        StartMusic(chosenMusicIndex);
         StartBeatScroller(audioManager.GetCurrentSoundBpm(), audioManager.GetCurrentSoundInitialBeatTime(),audioManager.GetCurrentSoundLength());
         SetTimerLength(audioManager.GetCurrentSoundLength());
         ResetCountdownTimer();
@@ -81,9 +86,10 @@ public class GameMaster : MonoBehaviour
         fightTimer.ResetCountdownTimer();
     }
 
-    private void StartRadomMusic(int randomIndex)
+    public void StartMusic(int musicIndex)
     {
-        audioManager.Play(randomIndex);
+        audioManager.Stop();
+        audioManager.Play(musicIndex);
     }
 
     private void StartBeatScroller(float soundBpm, float initialBeatTime, float musicLength)
