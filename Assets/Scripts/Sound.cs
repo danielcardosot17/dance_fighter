@@ -22,7 +22,7 @@ public class Sound
     
     public float bpm;
     
-    public float initialBeatTime;
+    [Range(0f,1f)] public float initialBeatTime;
 
     public List<float> beatTimes;
 }

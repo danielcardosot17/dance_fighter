@@ -13,7 +13,7 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private TMP_Text player1Feedback;
     [SerializeField] private TMP_Text player2Feedback;
     [SerializeField] private GameEventSO pulseBeatEvent;
-    [SerializeField] [Range(0.0f, 0.1f)] private float beatDifferencePercentage;
+    [SerializeField] [Range(0.0f, 0.5f)] private float beatDifferencePercentage;
     [SerializeField] private Color beatOriginalColor;
     [SerializeField] private Color beatRightColor;
     [SerializeField] private Color beatWrongColor;
@@ -39,13 +39,13 @@ public class BeatManager : MonoBehaviour
 
     public void StartBeatScroller(float soundBpm, float initialBeatTime, float musicLength)
     {
-        StartBeatCenter(soundBpm, initialBeatTime, musicLength);
         musicBpm = soundBpm;
+        StartBeatCenter(soundBpm, initialBeatTime, musicLength);
     }
 
     private void StartBeatCenter(float soundBpm, float initialBeatTime, float musicLength)
     {
-        StartCoroutine(DoAfterTimeCoroutine(initialBeatTime,() => {
+        StartCoroutine(DoAfterTimeCoroutine(initialBeatTime * 60/soundBpm,() => {
             StartCoroutine(PulseWithBpmCoroutine(soundBpm));
         }));
         StartCoroutine(DoAfterTimeCoroutine(musicLength,() => {
@@ -81,6 +81,8 @@ public class BeatManager : MonoBehaviour
 
     public void MarkBeatCenterTime()
     {
+        Debug.Log("currentBeatTimeDiff");
+        Debug.Log(Time.time - currentBeatTime);
         currentBeatTime = Time.time;
         nextBeatTime = currentBeatTime + 60/musicBpm;
     }

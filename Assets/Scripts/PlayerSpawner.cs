@@ -25,6 +25,7 @@ public class PlayerSpawner : MonoBehaviour
 
     private List<int> playerPrefabIndexList;
     private List<GameObject> playerPrefabList;
+    private List<GameObject> players;
 
     private void Awake() {
         controlSchemeList = new List<string>();
@@ -34,6 +35,7 @@ public class PlayerSpawner : MonoBehaviour
         }
         playerPrefabIndexList = new List<int>();
         playerPrefabList = new List<GameObject>();
+        players = new List<GameObject>();
         playerPrefabIndexList.Add(0);
         playerPrefabIndexList.Add(0);
         playerPrefabList.Add(new GameObject("Preview Player 1"));
@@ -52,6 +54,7 @@ public class PlayerSpawner : MonoBehaviour
             AddAnimatorController(newPlayerGO);
             AddHealthController(newPlayerGO);
             AddGameEventListeners(newPlayerGO);
+            players.Add(newPlayerGO);
         }
     }
 
@@ -164,6 +167,20 @@ public class PlayerSpawner : MonoBehaviour
         foreach(var gameObject in playerPrefabList)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void DestroyPlayers()
+    {
+        if(players.Count > 0)
+        {
+            for(int i = 1; i >=0; i--)
+            {
+                var playerToDestroy = players[i];
+                players.RemoveAt(i);
+                Destroy(playerToDestroy);
+            }
+            players = new List<GameObject>();
         }
     }
 }

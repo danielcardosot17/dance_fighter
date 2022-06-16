@@ -54,6 +54,7 @@ public class GameMaster : MonoBehaviour
     public void StartGame()
     {
         playerSpawner.DestroyAllPreviewModels();
+        playerSpawner.DestroyPlayers();
         playerSpawner.SpawnPlayers();
         isPlaying = true;
         startMenuCanvas.gameObject.SetActive(false);
