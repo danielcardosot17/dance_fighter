@@ -33,7 +33,8 @@ public class GameMaster : MonoBehaviour
         startMenuCanvas.gameObject.SetActive(true);
         endMenuCanvas.gameObject.SetActive(false);
         pauseGameCanvas.gameObject.SetActive(false);
-        playerSpawner.SpawnPlayers();
+        playerSpawner.PreviewModel(0,0);
+        playerSpawner.PreviewModel(1,0);
     }
 
     // Update is called once per frame
@@ -52,6 +53,8 @@ public class GameMaster : MonoBehaviour
 
     public void StartGame()
     {
+        playerSpawner.DestroyAllPreviewModels();
+        playerSpawner.SpawnPlayers();
         isPlaying = true;
         startMenuCanvas.gameObject.SetActive(false);
         endMenuCanvas.gameObject.SetActive(false);

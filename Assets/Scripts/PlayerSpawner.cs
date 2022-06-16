@@ -22,23 +22,30 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private GameEventSO unPausePlayerAnimationEvent;
     [SerializeField] private GameEventSO pausePlayerAnimationEvent;
     private List<string> controlSchemeList;
-    private List<PlayerController> players;
+
+    private List<int> playerPrefabIndexList;
+    private List<GameObject> playerPrefabList;
 
     private void Awake() {
-        players = new List<PlayerController>();
         controlSchemeList = new List<string>();
         foreach(var control in controls.controlSchemes)
         {
             controlSchemeList.Add(control.name);
         }
+        playerPrefabIndexList = new List<int>();
+        playerPrefabList = new List<GameObject>();
+        playerPrefabIndexList.Add(0);
+        playerPrefabIndexList.Add(0);
+        playerPrefabList.Add(new GameObject("Preview Player 1"));
+        playerPrefabList.Add(new GameObject("Preview Player 2"));
     }
 
     public void SpawnPlayers()
     {
         for(int i = 0; i < 2; i++)
         {
-            int randomInt = UnityEngine.Random.Range(0, playerPrefabs.Count);
-            var newPlayerGO = PlayerInput.Instantiate(playerPrefabs[randomInt], controlScheme: controlSchemeList[i], pairWithDevice: Keyboard.current).gameObject;
+            // int randomInt = UnityEngine.Random.Range(0, playerPrefabs.Count);
+            var newPlayerGO = PlayerInput.Instantiate(playerPrefabs[playerPrefabIndexList[i]], controlScheme: controlSchemeList[i], pairWithDevice: Keyboard.current).gameObject;
             newPlayerGO.transform.position = spawnPoints[i].position;
             newPlayerGO.transform.rotation = spawnPoints[i].rotation;
             AddPlayerController(newPlayerGO, i);
@@ -131,5 +138,32 @@ public class PlayerSpawner : MonoBehaviour
         newPlayer.PlayerId = playerId;
         newPlayer.BeatSyncEvent = playerBeatEvents[playerId];
         newPlayer.Initialize();
+    }
+
+    public void PreviewModel(int playerIndex, int modelIndex)
+    {
+        Destroy(playerPrefabList[playerIndex]);
+        var preview = Instantiate(playerPrefabs[modelIndex], spawnPoints[playerIndex].position, spawnPoints[playerIndex].rotation);
+        AddAnimatorController(preview);
+        playerPrefabList[playerIndex] = preview;
+    }
+
+    public void NextAvatar(int playerIndex)
+    {
+        var modelIndex = playerPrefabIndexList[playerIndex] + 1;
+        if(modelIndex >= playerPrefabs.Count)
+        {
+            modelIndex = 0;
+        }
+        playerPrefabIndexList[playerIndex] = modelIndex;
+        PreviewModel(playerIndex, modelIndex);
+    }
+
+    public void DestroyAllPreviewModels()
+    {
+        foreach(var gameObject in playerPrefabList)
+        {
+            Destroy(gameObject);
+        }
     }
 }
