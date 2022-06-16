@@ -1120,6 +1120,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1267414401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6884741595739011611, guid: 21efa6898b790e140b236776ebf07540, type: 3}
+  m_PrefabInstance: {fileID: 8706385905386136916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1287808826 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8706385904526180974, guid: 21efa6898b790e140b236776ebf07540, type: 3}
@@ -1160,6 +1171,17 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1496646378 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1496646378, guid: 21efa6898b790e140b236776ebf07540, type: 3}
+  m_PrefabInstance: {fileID: 8706385905386136916}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1562328306 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1595696508159635726, guid: 689502ee5c58deb4aafba1366198c268, type: 3}
@@ -1327,9 +1349,65 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: player1Feedback
+      value: 
+      objectReference: {fileID: 1496646378}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: player2Feedback
+      value: 
+      objectReference: {fileID: 1267414401}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatRightColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatRightColor.b
+      value: 0.5270051
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatRightColor.g
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatRightColor.r
+      value: 0.24385896
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatWrongColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatWrongColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatWrongColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatWrongColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
       propertyPath: beatCenterAnimator
       value: 
       objectReference: {fileID: 847089704}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatOriginalColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatOriginalColor.b
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatOriginalColor.g
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatOriginalColor.r
+      value: 0.5019608
+      objectReference: {fileID: 0}
     - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
       propertyPath: player1BeatAnimator
       value: 
@@ -1338,6 +1416,10 @@ PrefabInstance:
       propertyPath: player2BeatAnimator
       value: 
       objectReference: {fileID: 1027571317}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatDifferencePercentage
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 782474424795440846, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
       propertyPath: m_Name
       value: BeatManager
