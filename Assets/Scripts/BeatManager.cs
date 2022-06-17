@@ -18,6 +18,7 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private Color beatRightColor;
     [SerializeField] private Color beatWrongColor;
     private List<Animator> playerBeatAnimatorList;
+    private List<bool> playersPressed;
     private List<TMP_Text> playerFeedbackList;
     private float musicBpm = 0;
     private float currentBeatTime = 0;
@@ -25,8 +26,11 @@ public class BeatManager : MonoBehaviour
 
     private void Start() {
         playerBeatAnimatorList = new List<Animator>();
+        playersPressed = new List<bool>();
         playerBeatAnimatorList.Add(player1BeatAnimator);
         playerBeatAnimatorList.Add(player2BeatAnimator);
+        playersPressed.Add(false);
+        playersPressed.Add(false);
         playerFeedbackList = new List<TMP_Text>();
         playerFeedbackList.Add(player1Feedback);
         playerFeedbackList.Add(player2Feedback);
@@ -85,6 +89,24 @@ public class BeatManager : MonoBehaviour
         Debug.Log(Time.time - currentBeatTime);
         currentBeatTime = Time.time;
         nextBeatTime = currentBeatTime + 60/musicBpm;
+        StartCoroutine(DoAfterTimeCoroutine((60/musicBpm) * beatDifferencePercentage,() => {
+            CheckIfPlayersPressed();
+        }));
+    }
+
+    private void CheckIfPlayersPressed()
+    {
+        for(int playerId = 0; playerId < 2; playerId++)
+        {
+            if(!playersPressed[playerId])
+            {
+                NotOnTimeBeat(playerId);
+            }
+            else
+            {
+                playersPressed[playerId] = false;
+            }
+        }
     }
 
     public void PlayerBeatAnimation(int playerId)
@@ -94,6 +116,7 @@ public class BeatManager : MonoBehaviour
 
     public void CheckIfPlayerBeatIsOnTime(int playerId)
     {
+        playersPressed[playerId] = true;
         var playerBeatTime = Time.time;
         var currentTimeDiff = Mathf.Abs(currentBeatTime - playerBeatTime);
         var nextTimeDiff = Mathf.Abs(nextBeatTime - playerBeatTime);
@@ -101,16 +124,10 @@ public class BeatManager : MonoBehaviour
         if((currentTimeDiff < (60/musicBpm) * beatDifferencePercentage) || (nextTimeDiff < (60/musicBpm) * beatDifferencePercentage))
         {
             OnTimeBeat(playerId);
-            ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatRightColor);
-            ChangeFeedbackText(playerFeedbackList[playerId], "NICE");
-            Debug.Log("Player " + playerId.ToString() + " Beat on Time!");
         }
         else
         {
             NotOnTimeBeat(playerId);
-            ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatWrongColor);
-            ChangeFeedbackText(playerFeedbackList[playerId], "MISS");
-            Debug.Log("Player " + playerId.ToString() + " Beat WRONG!");
         }
     }
 
@@ -121,11 +138,15 @@ public class BeatManager : MonoBehaviour
 
     private void NotOnTimeBeat(int playerId)
     {
-        
+        ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatWrongColor);
+        ChangeFeedbackText(playerFeedbackList[playerId], "MISS");
+        Debug.Log("Player " + playerId.ToString() + " Beat MISS!");
     }
 
     private void OnTimeBeat(int playerId)
     {
-        
+        ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatRightColor);
+        ChangeFeedbackText(playerFeedbackList[playerId], "NICE");
+        Debug.Log("Player " + playerId.ToString() + " Beat on Time!");
     }
 }
