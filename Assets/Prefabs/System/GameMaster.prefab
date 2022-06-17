@@ -55,6 +55,7 @@ MonoBehaviour:
   pauseGameCanvas: {fileID: 0}
   audioManager: {fileID: 0}
   beatManager: {fileID: 0}
+  playerSpawner: {fileID: 0}
   disablePlayerInputEvent: {fileID: 11400000, guid: b3028fe56bb66b745a5022374ad04a8b, type: 2}
   enablePlayerInputEvent: {fileID: 11400000, guid: 977d0f72c0afdd0458e010a24490b7d9, type: 2}
   disableUIInputEvent: {fileID: 11400000, guid: 7170e84dfbb944e45be85506fabbb09c, type: 2}

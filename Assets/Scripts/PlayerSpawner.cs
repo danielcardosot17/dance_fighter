@@ -52,7 +52,6 @@ public class PlayerSpawner : MonoBehaviour
             newPlayerGO.transform.rotation = spawnPoints[i].rotation;
             AddPlayerController(newPlayerGO, i);
             AddAnimatorController(newPlayerGO);
-            AddHealthController(newPlayerGO);
             AddGameEventListeners(newPlayerGO);
             players.Add(newPlayerGO);
         }
@@ -126,11 +125,6 @@ public class PlayerSpawner : MonoBehaviour
         disablePlayerInputEvent.RegisterListener(listener);
         listener.Response = new UnityEvent();
         listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().DisablePlayerInput);
-    }
-
-    private void AddHealthController(GameObject newPlayerGO)
-    {
-        var healthController = newPlayerGO.AddComponent<HealthController>();
     }
 
     private void AddPlayerController(GameObject newPlayerGO, int playerId)

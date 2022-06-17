@@ -146,44 +146,49 @@ MonoBehaviour:
     category: 
     clip: {fileID: 8300000, guid: 43a3a1c0b76d55b498d4e986f3021d18, type: 3}
     priority: 128
-    volume: 1
+    volume: 0.8
     pitch: 1
     loop: 0
-    bpm: 60
+    bpm: 105
     initialBeatTime: 0
+    beatTimes: []
   - name: Black Ant - government funded weed
     category: 
     clip: {fileID: 8300000, guid: ceb36e2c21794b94193fc02f388e76c6, type: 3}
     priority: 128
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
-    bpm: 60
+    bpm: 84
     initialBeatTime: 0
+    beatTimes: []
   - name: 16446__kkz__treaspassa
     category: 
     clip: {fileID: 8300000, guid: aac4817f563f78141963295f02dc25e4, type: 3}
     priority: 128
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
-    bpm: 60
+    bpm: 99
     initialBeatTime: 0
+    beatTimes: []
   - name: 631480__tattoo-beatz__tattoo-beatz-reggae-beats
     category: 
     clip: {fileID: 8300000, guid: 8f30fdb155af44f4d820339708396a31, type: 3}
     priority: 128
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
-    bpm: 60
+    bpm: 107
     initialBeatTime: 0
+    beatTimes: []
   - name: 635904__frys3r__easin-in-87bpm
     category: 
     clip: {fileID: 8300000, guid: d6acca75e0c21754587206e6c08ec370, type: 3}
     priority: 128
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
-    bpm: 60
+    bpm: 87
     initialBeatTime: 0
+    beatTimes: []
