@@ -6,20 +6,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private GameEventSO pauseGameEvent;
-    public GameEventSO PauseGameEvent { get => pauseGameEvent; set => pauseGameEvent = value; }
-    private GameEventSO unPauseGameEvent;
-    public GameEventSO UnPauseGameEvent { get => unPauseGameEvent; set => unPauseGameEvent = value; }
     private InputActionMap playerActionMap;
     private InputActionMap uiActionMap;
     private Animator playerAnimator;
+    private GameMaster gameMaster;
+    private BeatManager beatManager;
+    private AttackManager attackManager;
     private bool isAttacking = false;
     private int playerId;
     public int PlayerId { get => playerId; set => playerId = value; }
-    private GameEventSO beatSyncEvent;
-    public GameEventSO BeatSyncEvent { get => beatSyncEvent; set => beatSyncEvent = value; }
-    private GameEventSO attackEvent;
-    public GameEventSO AttackEvent { get => attackEvent; set => attackEvent = value; }
+    public GameMaster GameMaster { get => gameMaster; set => gameMaster = value; }
+    public BeatManager BeatManager { get => beatManager; set => beatManager = value; }
+    public AttackManager AttackManager { get => attackManager; set => attackManager = value; }
 
     private void Awake() {
         // playerInputActions = new PlayerInputActions();
@@ -35,24 +33,25 @@ public class PlayerController : MonoBehaviour
 
     private void BeatSync(InputAction.CallbackContext obj)
     {
-        BeatSyncEvent.Raise();
+        BeatManager.CheckIfPlayerBeatIsOnTime(PlayerId);
+        BeatManager.PlayerBeatAnimation(PlayerId);
     }
 
     private void Attack(InputAction.CallbackContext obj)
     {
-        isAttacking = true;
+        isAttacking = !isAttacking;
         playerAnimator.SetBool("isAttacking", isAttacking);
 
-        AttackEvent.Raise();
+        AttackManager.PlayerAttack(PlayerId);
     }
 
     private void PauseGame(InputAction.CallbackContext obj)
     {
-        PauseGameEvent.Raise();
+        GameMaster.PauseGame();
     }
     private void UnPauseGame(InputAction.CallbackContext obj)
     {
-        UnPauseGameEvent.Raise();
+        GameMaster.UnPauseGame();
     }
 
     public void DisablePlayerInput()
@@ -99,11 +98,6 @@ public class PlayerController : MonoBehaviour
         uiActionMap.FindAction("UnPauseGame").performed += UnPauseGame;
         DisableUIInput();
         DisablePlayerInput();
-
-        // playerInputActions.Player.Attack.performed += Attack;
-        // playerInputActions.Player.Beat.performed += BeatSync;
-        // playerInputActions.Player.PauseGame.performed += PauseGame;
-        // playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
     }
 
     private void OnDisable() {

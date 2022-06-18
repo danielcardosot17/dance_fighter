@@ -1167,43 +1167,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a79c6ede648904b8350da2c79ee497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1651499346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8040817466158261986, guid: 42ac845aabcfb7d4ca82313bdf76d84d, type: 3}
+--- !u!114 &1651499349 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1687772263585750030, guid: 42ac845aabcfb7d4ca82313bdf76d84d, type: 3}
   m_PrefabInstance: {fileID: 2960431242697554927}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1651499347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651499346}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88a9b5e30719a843802a7c2081771f1, type: 3}
+  m_Script: {fileID: 11500000, guid: a55551e28f0cc624297d2494c7b7e39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 4ceaa751a19854d449a8817f1cd6f7fd, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1651499348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651499346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f88a9b5e30719a843802a7c2081771f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 031655f0937bbba4b83c22d9a45d09e3, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &2015693313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1620882653476499971, guid: 6f37a0e5d728e30489f6048afc276513, type: 3}
@@ -1634,6 +1608,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 424733602, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
+      propertyPath: gameMaster
+      value: 
+      objectReference: {fileID: 1562328306}
+    - target: {fileID: 424733602, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
+      propertyPath: beatManager
+      value: 
+      objectReference: {fileID: 809604646}
+    - target: {fileID: 424733602, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
+      propertyPath: attackManager
+      value: 
+      objectReference: {fileID: 1651499349}
+    - target: {fileID: 424733602, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1157408582}
@@ -1641,25 +1627,13 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[1]
       value: 
       objectReference: {fileID: 2015693313}
-    - target: {fileID: 424733602, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
-      propertyPath: playerAttackEvents.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 424733602, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
-      propertyPath: playerAttackEvents.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 031655f0937bbba4b83c22d9a45d09e3, type: 2}
-    - target: {fileID: 424733602, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
-      propertyPath: playerAttackEvents.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4ceaa751a19854d449a8817f1cd6f7fd, type: 2}
     - target: {fileID: 2817177915363422650, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
       propertyPath: m_Name
       value: PlayerSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 2817177915363422651, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2817177915363422651, guid: 1ecc778ae74b2bf47ae8cc8b35a2826e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1767,6 +1741,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1687772263585750030, guid: 42ac845aabcfb7d4ca82313bdf76d84d, type: 3}
+      propertyPath: beatManager
+      value: 
+      objectReference: {fileID: 809604646}
     - target: {fileID: 8040817466158261986, guid: 42ac845aabcfb7d4ca82313bdf76d84d, type: 3}
       propertyPath: m_Name
       value: AttackManager
@@ -1826,7 +1804,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2997799639968299020, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2997799639968299020, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
       propertyPath: m_LocalPosition.x

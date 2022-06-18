@@ -63,15 +63,11 @@ MonoBehaviour:
   playerBeatEvents:
   - {fileID: 11400000, guid: a5b556314cd2a4d4fa53390f5c676da3, type: 2}
   - {fileID: 11400000, guid: 514f13178fca2414c801db84db5f6d80, type: 2}
+  playerAttackEvents:
+  - {fileID: 11400000, guid: 031655f0937bbba4b83c22d9a45d09e3, type: 2}
+  - {fileID: 11400000, guid: 4ceaa751a19854d449a8817f1cd6f7fd, type: 2}
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   animatorController: {fileID: 9100000, guid: 05c6837680c532c4f98659786e57ebaf, type: 2}
-  pauseGameEvent: {fileID: 11400000, guid: f976d9c37f9206943a5d0f0118ae134f, type: 2}
-  unPauseGameEvent: {fileID: 11400000, guid: d3c1d1a8d8205c048a087ec2655dc7c6, type: 2}
-  disablePlayerInputEvent: {fileID: 11400000, guid: b3028fe56bb66b745a5022374ad04a8b, type: 2}
-  enablePlayerInputEvent: {fileID: 11400000, guid: 977d0f72c0afdd0458e010a24490b7d9, type: 2}
-  disableUIInputEvent: {fileID: 11400000, guid: 7170e84dfbb944e45be85506fabbb09c, type: 2}
-  enableUIInputEvent: {fileID: 11400000, guid: f37bb2886b9fd4a49ad013121c6a22ea, type: 2}
-  unPausePlayerAnimationEvent: {fileID: 11400000, guid: 7449e55af23d9e44fb870f12c733afe9, type: 2}
-  pausePlayerAnimationEvent: {fileID: 11400000, guid: c428c998fc43e234c8e37cbda208a68b, type: 2}
+  gameMaster: {fileID: 0}

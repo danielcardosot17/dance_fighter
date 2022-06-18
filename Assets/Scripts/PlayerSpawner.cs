@@ -13,17 +13,11 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private List<GameEventSO> playerAttackEvents;
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private RuntimeAnimatorController animatorController;
-
-    [SerializeField] private GameEventSO pauseGameEvent;
-    [SerializeField] private GameEventSO unPauseGameEvent;
-    [SerializeField] private GameEventSO disablePlayerInputEvent;
-    [SerializeField] private GameEventSO enablePlayerInputEvent;
-    [SerializeField] private GameEventSO disableUIInputEvent;
-    [SerializeField] private GameEventSO enableUIInputEvent;
-    [SerializeField] private GameEventSO unPausePlayerAnimationEvent;
-    [SerializeField] private GameEventSO pausePlayerAnimationEvent;
+    [SerializeField] private GameMaster gameMaster;
+    [SerializeField] private BeatManager beatManager;
+    [SerializeField] private AttackManager attackManager;
+    
     private List<string> controlSchemeList;
-
     private List<int> playerPrefabIndexList;
     private List<GameObject> playerPrefabList;
     private List<GameObject> players;
@@ -47,14 +41,13 @@ public class PlayerSpawner : MonoBehaviour
     {
         for(int i = 0; i < 2; i++)
         {
-            // int randomInt = UnityEngine.Random.Range(0, playerPrefabs.Count);
             var newPlayerGO = PlayerInput.Instantiate(playerPrefabs[playerPrefabIndexList[i]], controlScheme: controlSchemeList[i], pairWithDevice: Keyboard.current).gameObject;
             newPlayerGO.transform.position = spawnPoints[i].position;
             newPlayerGO.transform.rotation = spawnPoints[i].rotation;
             AddPlayerController(newPlayerGO, i);
             AddAnimatorController(newPlayerGO);
-            AddGameEventListeners(newPlayerGO);
             players.Add(newPlayerGO);
+            gameMaster.PlayerList.Add(newPlayerGO.GetComponent<PlayerController>());
         }
     }
 
@@ -64,78 +57,13 @@ public class PlayerSpawner : MonoBehaviour
         animator.runtimeAnimatorController = animatorController;
     }
 
-    private void AddGameEventListeners(GameObject newPlayerGO)
-    {
-        AddDisablePlayerInputListener(newPlayerGO);
-        AddEnablePlayerInputListener(newPlayerGO);
-        AddDisableUIInputListener(newPlayerGO);
-        AddEnableUIInputListener(newPlayerGO);
-        AddUnPausePlayerAnimationListener(newPlayerGO);
-        AddPausePlayerAnimationListener(newPlayerGO);
-    }
-
-    private void AddPausePlayerAnimationListener(GameObject newPlayerGO)
-    {
-        var listener = newPlayerGO.AddComponent<GameEventListener>();
-        listener.Event = pausePlayerAnimationEvent;
-        pausePlayerAnimationEvent.RegisterListener(listener);
-        listener.Response = new UnityEvent();
-        listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().PauseAnimation);
-    }
-
-    private void AddUnPausePlayerAnimationListener(GameObject newPlayerGO)
-    {
-        var listener = newPlayerGO.AddComponent<GameEventListener>();
-        listener.Event = unPausePlayerAnimationEvent;
-        unPausePlayerAnimationEvent.RegisterListener(listener);
-        listener.Response = new UnityEvent();
-        listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().UnPauseAnimation);
-    }
-
-    private void AddEnableUIInputListener(GameObject newPlayerGO)
-    {
-        var listener = newPlayerGO.AddComponent<GameEventListener>();
-        listener.Event = enableUIInputEvent;
-        enableUIInputEvent.RegisterListener(listener);
-        listener.Response = new UnityEvent();
-        listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().EnableUIInput);
-    }
-
-    private void AddDisableUIInputListener(GameObject newPlayerGO)
-    {
-        var listener = newPlayerGO.AddComponent<GameEventListener>();
-        listener.Event = disableUIInputEvent;
-        disableUIInputEvent.RegisterListener(listener);
-        listener.Response = new UnityEvent();
-        listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().DisableUIInput);
-    }
-
-    private void AddEnablePlayerInputListener(GameObject newPlayerGO)
-    {
-        var listener = newPlayerGO.AddComponent<GameEventListener>();
-        listener.Event = enablePlayerInputEvent;
-        enablePlayerInputEvent.RegisterListener(listener);
-        listener.Response = new UnityEvent();
-        listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().EnablePlayerInput);
-    }
-
-    private void AddDisablePlayerInputListener(GameObject newPlayerGO)
-    {
-        var listener = newPlayerGO.AddComponent<GameEventListener>();
-        listener.Event = disablePlayerInputEvent;
-        disablePlayerInputEvent.RegisterListener(listener);
-        listener.Response = new UnityEvent();
-        listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().DisablePlayerInput);
-    }
-
     private void AddPlayerController(GameObject newPlayerGO, int playerId)
     {
         var newPlayer = newPlayerGO.AddComponent<PlayerController>();
-        newPlayer.PauseGameEvent = pauseGameEvent;
-        newPlayer.UnPauseGameEvent = unPauseGameEvent;
         newPlayer.PlayerId = playerId;
-        newPlayer.BeatSyncEvent = playerBeatEvents[playerId];
-        newPlayer.AttackEvent = playerAttackEvents[playerId];
+        newPlayer.BeatManager = beatManager;
+        newPlayer.GameMaster = gameMaster;
+        newPlayer.AttackManager = attackManager;
         newPlayer.Initialize();
     }
 

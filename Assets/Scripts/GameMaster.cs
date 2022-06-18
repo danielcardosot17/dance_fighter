@@ -12,23 +12,18 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private BeatManager beatManager;
     [SerializeField] private PlayerSpawner playerSpawner;
-
-    [SerializeField] private GameEventSO disablePlayerInputEvent;
-    [SerializeField] private GameEventSO enablePlayerInputEvent;
-    [SerializeField] private GameEventSO disableUIInputEvent;
-    [SerializeField] private GameEventSO enableUIInputEvent;
-    [SerializeField] private GameEventSO pausePlayerAnimationEvent;
-    [SerializeField] private GameEventSO unPausePlayerAnimationEvent;
-
-
     private List<PlayerController> playerList;
+    public List<PlayerController> PlayerList { get => playerList; set => playerList = value; }
+
     private FightTimer fightTimer;
     private bool isPlaying = false;
     private int chosenMusicIndex = 0;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        playerList = new List<PlayerController>();
         fightTimer = GetComponent<FightTimer>();
         startMenuCanvas.gameObject.SetActive(true);
         endMenuCanvas.gameObject.SetActive(false);
@@ -66,7 +61,6 @@ public class GameMaster : MonoBehaviour
         ResetCountdownTimer();
         StartTimer();
         StartCountdown();
-        // StartPlayers();
     }
 
     private void StartCountdown()
@@ -76,8 +70,11 @@ public class GameMaster : MonoBehaviour
 
     public void StartPlayers()
     {
-        disableUIInputEvent.Raise();
-        enablePlayerInputEvent.Raise();
+        foreach(var player in PlayerList)
+        {
+            player.DisableUIInput();
+            player.EnablePlayerInput();
+        }
     }
 
     private void SetTimerLength(float length)
@@ -114,8 +111,11 @@ public class GameMaster : MonoBehaviour
     public void EndGame()
     {
         PauseGame();
-        disableUIInputEvent.Raise();
-        unPausePlayerAnimationEvent.Raise();
+        foreach(var player in PlayerList)
+        {
+            player.DisableUIInput();
+            player.UnPauseAnimation();
+        }
         pauseGameCanvas.gameObject.SetActive(false);
         audioManager.Stop();
         var winner = GetWinner();
@@ -194,9 +194,12 @@ public class GameMaster : MonoBehaviour
             audioManager.Pause();
             fightTimer.PauseTimer();
             fightTimer.PauseCountdown();
-            disablePlayerInputEvent.Raise();
-            enableUIInputEvent.Raise();
-            pausePlayerAnimationEvent.Raise();
+            foreach(var player in PlayerList)
+            {
+                player.DisablePlayerInput();
+                player.EnableUIInput();
+                player.PauseAnimation();
+            }
         }
     }
 
@@ -209,9 +212,12 @@ public class GameMaster : MonoBehaviour
             audioManager.UnPause();
             fightTimer.StartTimer();
             fightTimer.StartCountdown();
-            disableUIInputEvent.Raise();
-            enablePlayerInputEvent.Raise();
-            unPausePlayerAnimationEvent.Raise();
+            foreach(var player in PlayerList)
+            {
+                player.DisableUIInput();
+                player.EnablePlayerInput();
+                player.UnPauseAnimation();
+            }
         }
     }
 

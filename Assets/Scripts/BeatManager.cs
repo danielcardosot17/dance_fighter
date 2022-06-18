@@ -12,7 +12,6 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private Animator player2BeatAnimator;
     [SerializeField] private TMP_Text player1Feedback;
     [SerializeField] private TMP_Text player2Feedback;
-    [SerializeField] private GameEventSO pulseBeatEvent;
     [SerializeField] [Range(0.0f, 0.5f)] private float beatDifferencePercentage;
     [SerializeField] private Color beatOriginalColor;
     [SerializeField] private Color beatRightColor;
@@ -68,7 +67,8 @@ public class BeatManager : MonoBehaviour
     {
         while(true)
         {
-            pulseBeatEvent.Raise();
+            BeatCenterAnimation();
+            MarkBeatCenterTime();
             yield return new WaitForSeconds(60/bpm);
         }
     }

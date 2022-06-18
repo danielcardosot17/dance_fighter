@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a55551e28f0cc624297d2494c7b7e39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beatManager: {fileID: 0}
+  player1AttackBars: []
+  player2AttackBars: []

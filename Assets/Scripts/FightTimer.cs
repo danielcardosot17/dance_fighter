@@ -8,9 +8,8 @@ public class FightTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text countdownText;
-    [SerializeField] private GameEventSO endGameByTimeEvent;
-    [SerializeField] private GameEventSO countdownZeroEvent;
     [SerializeField] private int startCountdownTime;
+    [SerializeField] private GameMaster gameMaster;
     private bool isTimer = false;
     private float countdownLength = 0.0f;
     private float timerLength = 0.0f;
@@ -26,8 +25,8 @@ public class FightTimer : MonoBehaviour
             if(timerLength <= 0)
             {
                 timerLength = 0.0f;
-                endGameByTimeEvent.Raise();
                 PauseTimer();
+                gameMaster.EndGame();
             }
         }
         if(isCountdown)
@@ -37,9 +36,9 @@ public class FightTimer : MonoBehaviour
             if(countdownLength <= 0)
             {
                 countdownLength = 0.0f;
-                countdownZeroEvent.Raise();
                 DisableCountdownText();
                 PauseCountdown();
+                gameMaster.StartPlayers();
             }
         }
     }
