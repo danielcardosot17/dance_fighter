@@ -10,6 +10,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private InputActionAsset controls; 
     [SerializeField] private List<GameEventSO> playerBeatEvents;
+    [SerializeField] private List<GameEventSO> playerAttackEvents;
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private RuntimeAnimatorController animatorController;
 
@@ -134,6 +135,7 @@ public class PlayerSpawner : MonoBehaviour
         newPlayer.UnPauseGameEvent = unPauseGameEvent;
         newPlayer.PlayerId = playerId;
         newPlayer.BeatSyncEvent = playerBeatEvents[playerId];
+        newPlayer.AttackEvent = playerAttackEvents[playerId];
         newPlayer.Initialize();
     }
 

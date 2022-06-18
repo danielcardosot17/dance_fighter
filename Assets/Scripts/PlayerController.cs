@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public int PlayerId { get => playerId; set => playerId = value; }
     private GameEventSO beatSyncEvent;
     public GameEventSO BeatSyncEvent { get => beatSyncEvent; set => beatSyncEvent = value; }
+    private GameEventSO attackEvent;
+    public GameEventSO AttackEvent { get => attackEvent; set => attackEvent = value; }
 
     private void Awake() {
         // playerInputActions = new PlayerInputActions();
@@ -34,6 +36,14 @@ public class PlayerController : MonoBehaviour
     private void BeatSync(InputAction.CallbackContext obj)
     {
         BeatSyncEvent.Raise();
+    }
+
+    private void Attack(InputAction.CallbackContext obj)
+    {
+        isAttacking = true;
+        playerAnimator.SetBool("isAttacking", isAttacking);
+
+        AttackEvent.Raise();
     }
 
     private void PauseGame(InputAction.CallbackContext obj)
@@ -74,11 +84,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator.speed = 1;
     }
 
-    private void Attack(InputAction.CallbackContext obj)
-    {
-        isAttacking = !isAttacking;
-        playerAnimator.SetBool("isAttacking", isAttacking);
-    }
 
     public void Initialize()
     {

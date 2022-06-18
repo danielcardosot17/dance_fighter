@@ -19,6 +19,7 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private Color beatWrongColor;
     private List<Animator> playerBeatAnimatorList;
     private List<bool> playersPressed;
+    private List<bool> playersOnTime;
     private List<TMP_Text> playerFeedbackList;
     private float musicBpm = 0;
     private float currentBeatTime = 0;
@@ -26,11 +27,17 @@ public class BeatManager : MonoBehaviour
 
     private void Start() {
         playerBeatAnimatorList = new List<Animator>();
-        playersPressed = new List<bool>();
         playerBeatAnimatorList.Add(player1BeatAnimator);
         playerBeatAnimatorList.Add(player2BeatAnimator);
+
+        playersPressed = new List<bool>();
         playersPressed.Add(false);
         playersPressed.Add(false);
+        
+        playersOnTime = new List<bool>();
+        playersOnTime.Add(false);
+        playersOnTime.Add(false);
+
         playerFeedbackList = new List<TMP_Text>();
         playerFeedbackList.Add(player1Feedback);
         playerFeedbackList.Add(player2Feedback);
@@ -141,6 +148,8 @@ public class BeatManager : MonoBehaviour
         ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatWrongColor);
         ChangeFeedbackText(playerFeedbackList[playerId], "MISS");
         Debug.Log("Player " + playerId.ToString() + " Beat MISS!");
+        
+        playersOnTime[playerId] = false;
     }
 
     private void OnTimeBeat(int playerId)
@@ -148,5 +157,7 @@ public class BeatManager : MonoBehaviour
         ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatRightColor);
         ChangeFeedbackText(playerFeedbackList[playerId], "NICE");
         Debug.Log("Player " + playerId.ToString() + " Beat on Time!");
+        
+        playersOnTime[playerId] = true;
     }
 }
