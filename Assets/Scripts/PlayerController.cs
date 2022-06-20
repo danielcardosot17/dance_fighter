@@ -20,21 +20,20 @@ public class PlayerController : MonoBehaviour
     public AttackManager AttackManager { get => attackManager; set => attackManager = value; }
 
     private void Awake() {
-        // playerInputActions = new PlayerInputActions();
         playerAnimator = GetComponentInChildren<Animator>();
     }
-    
-    // private void OnEnable() {
-    //     playerInputActions.Player.Attack.performed += Attack;
-    //     playerInputActions.Player.Beat.performed += BeatSync;
-    //     playerInputActions.Player.PauseGame.performed += PauseGame;
-    //     playerInputActions.UI.UnPauseGame.performed += UnPauseGame;
-    // }
 
     private void BeatSync(InputAction.CallbackContext obj)
     {
-        BeatManager.CheckIfPlayerBeatIsOnTime(PlayerId);
         BeatManager.PlayerBeatAnimation(PlayerId);
+        if(BeatManager.CheckIfPlayerBeatIsOnTime(PlayerId))
+        {
+            AttackManager.IncreaseBeatCounter(PlayerId);
+        }
+        else
+        {
+            AttackManager.ResetBeatCounter(PlayerId);
+        }
     }
 
     private void Attack(InputAction.CallbackContext obj)
@@ -42,13 +41,22 @@ public class PlayerController : MonoBehaviour
         isAttacking = !isAttacking;
         playerAnimator.SetBool("isAttacking", isAttacking);
 
-        AttackManager.PlayerAttack(PlayerId);
+        BeatManager.PlayerBeatAnimation(PlayerId);
+        if(BeatManager.CheckIfPlayerBeatIsOnTime(PlayerId))
+        {
+            AttackManager.PlayerAttack(PlayerId);
+        }
+        else
+        {
+            AttackManager.ResetBeatCounter(PlayerId);
+        }
     }
 
     private void PauseGame(InputAction.CallbackContext obj)
     {
         GameMaster.PauseGame();
     }
+
     private void UnPauseGame(InputAction.CallbackContext obj)
     {
         GameMaster.UnPauseGame();

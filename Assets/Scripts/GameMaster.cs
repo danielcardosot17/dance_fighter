@@ -12,6 +12,8 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private BeatManager beatManager;
     [SerializeField] private PlayerSpawner playerSpawner;
+    [SerializeField] private AttackManager attackManager;
+    [SerializeField] private HealthManager healthManager;
     private List<PlayerController> playerList;
     public List<PlayerController> PlayerList { get => playerList; set => playerList = value; }
 
@@ -161,23 +163,23 @@ public class GameMaster : MonoBehaviour
     {
         ResetPlayerTransform();
         ResetPlayerHp();
-        ResetPlayerStamina();
-        ResetPlayerSpecialBar();
+        ResetPlayerAttackBar();
     }
 
-    private void ResetPlayerSpecialBar()
+    private void ResetPlayerAttackBar()
     {
-        
-    }
-
-    private void ResetPlayerStamina()
-    {
-        
+        foreach(var player in PlayerList)
+        {
+            attackManager.ResetBeatCounter(player.PlayerId);
+        }
     }
 
     private void ResetPlayerHp()
     {
-        
+        foreach(var player in PlayerList)
+        {
+            healthManager.ResetPlayerHp(player.PlayerId);
+        }
     }
 
     private void ResetPlayerTransform()

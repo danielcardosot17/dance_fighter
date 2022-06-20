@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class BeatManager : MonoBehaviour
 {
+    [SerializeField] private AttackManager attackManager;
     [SerializeField] private Animator beatCenterAnimator;
     [SerializeField] private Animator player1BeatAnimator;
     [SerializeField] private Animator player2BeatAnimator;
@@ -92,8 +93,6 @@ public class BeatManager : MonoBehaviour
 
     public void MarkBeatCenterTime()
     {
-        Debug.Log("currentBeatTimeDiff");
-        Debug.Log(Time.time - currentBeatTime);
         currentBeatTime = Time.time;
         nextBeatTime = currentBeatTime + 60/musicBpm;
         StartCoroutine(DoAfterTimeCoroutine((60/musicBpm) * beatDifferencePercentage,() => {
@@ -121,7 +120,7 @@ public class BeatManager : MonoBehaviour
         playerBeatAnimatorList[playerId].SetTrigger("PulseBeat");
     }
 
-    public void CheckIfPlayerBeatIsOnTime(int playerId)
+    public bool CheckIfPlayerBeatIsOnTime(int playerId)
     {
         playersPressed[playerId] = true;
         var playerBeatTime = Time.time;
@@ -131,10 +130,12 @@ public class BeatManager : MonoBehaviour
         if((currentTimeDiff < (60/musicBpm) * beatDifferencePercentage) || (nextTimeDiff < (60/musicBpm) * beatDifferencePercentage))
         {
             OnTimeBeat(playerId);
+            return true;
         }
         else
         {
             NotOnTimeBeat(playerId);
+            return false;
         }
     }
 
@@ -147,17 +148,13 @@ public class BeatManager : MonoBehaviour
     {
         ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatWrongColor);
         ChangeFeedbackText(playerFeedbackList[playerId], "MISS");
-        Debug.Log("Player " + playerId.ToString() + " Beat MISS!");
-        
-        playersOnTime[playerId] = false;
+
+        attackManager.ResetBeatCounter(playerId);
     }
 
     private void OnTimeBeat(int playerId)
     {
         ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatRightColor);
         ChangeFeedbackText(playerFeedbackList[playerId], "NICE");
-        Debug.Log("Player " + playerId.ToString() + " Beat on Time!");
-        
-        playersOnTime[playerId] = true;
     }
 }
