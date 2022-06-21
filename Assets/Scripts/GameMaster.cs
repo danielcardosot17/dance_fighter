@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private PlayerSpawner playerSpawner;
     [SerializeField] private AttackManager attackManager;
     [SerializeField] private HealthManager healthManager;
+    [SerializeField] private TMP_Text endMenuText;
     private List<PlayerController> playerList;
     public List<PlayerController> PlayerList { get => playerList; set => playerList = value; }
 
@@ -121,23 +123,25 @@ public class GameMaster : MonoBehaviour
         }
         pauseGameCanvas.gameObject.SetActive(false);
         audioManager.Stop();
-        var winner = GetWinner();
-        var loser = GetLoser();
-        PlayWinnerAnimation(winner);
-        PlayLoserAnimation(loser);
-        WriteWinnerInEndCanvas();
+
+        if(healthManager.IsTie())
+        {
+            WriteTieInCanvas();
+        }
+        else
+        {
+            var winnerId = healthManager.GetWinnerId();
+            var loserId = healthManager.GetLoserId();
+            PlayWinnerAnimation(winnerId);
+            PlayLoserAnimation(loserId);
+            WriteWinnerInEndCanvas(winnerId);
+        }
         ShowEndMenuCanvas();
-
     }
 
-    private Animator GetLoser()
+    private void WriteTieInCanvas()
     {
-        return new Animator();
-    }
-
-    private Animator GetWinner()
-    {
-        return new Animator();
+        endMenuText.text = "Tie!";
     }
 
     private void ShowEndMenuCanvas()
@@ -145,17 +149,17 @@ public class GameMaster : MonoBehaviour
         endMenuCanvas.gameObject.SetActive(true);
     }
 
-    private void WriteWinnerInEndCanvas()
+    private void WriteWinnerInEndCanvas(int winnerId)
+    {
+        endMenuText.text = "Player " + (winnerId+1).ToString() + "\n Victory!";
+    }
+
+    private void PlayLoserAnimation(int loserId)
     {
         
     }
 
-    private void PlayLoserAnimation(Animator loser)
-    {
-        
-    }
-
-    private void PlayWinnerAnimation(Animator winner)
+    private void PlayWinnerAnimation(int winnerId)
     {
         
     }

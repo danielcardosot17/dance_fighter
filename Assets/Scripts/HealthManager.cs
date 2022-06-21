@@ -55,4 +55,19 @@ public class HealthManager : MonoBehaviour
             enemyHealthText[playerId].text = enemyCurrentHealth[playerId].ToString();
         }
     }
+
+    public bool IsTie()
+    {
+        return enemyCurrentHealth[0] == enemyCurrentHealth[1];
+    }
+
+    public int GetWinnerId()
+    {
+        return (enemyCurrentHealth[0] > enemyCurrentHealth[1])? 1 : 0;
+    }
+
+    public int GetLoserId()
+    {
+        return (enemyCurrentHealth[0] > enemyCurrentHealth[1])? 0 : 1;
+    }
 }
