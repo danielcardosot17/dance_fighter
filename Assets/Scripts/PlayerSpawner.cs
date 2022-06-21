@@ -51,6 +51,16 @@ public class PlayerSpawner : MonoBehaviour
         }
     }
 
+    public List<PlayerController> GetPlayerControllerList()
+    {
+        var playerControllerList = new List<PlayerController>();
+        foreach(var player in players)
+        {
+            playerControllerList.Add(player.GetComponent<PlayerController>());
+        }
+        return playerControllerList;
+    }
+
     private void AddAnimatorController(GameObject newPlayerGO)
     {
         var animator = newPlayerGO.GetComponentInChildren<Animator>();

@@ -25,7 +25,7 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerList = new List<PlayerController>();
+        PlayerList = new List<PlayerController>();
         fightTimer = GetComponent<FightTimer>();
         startMenuCanvas.gameObject.SetActive(true);
         endMenuCanvas.gameObject.SetActive(false);
@@ -37,10 +37,10 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlaying)
-        {
+        // if(isPlaying)
+        // {
 
-        }
+        // }
     }
 
     public void ChooseMusic(int musicIndex)
@@ -53,6 +53,7 @@ public class GameMaster : MonoBehaviour
         playerSpawner.DestroyAllPreviewModels();
         playerSpawner.DestroyPlayers();
         playerSpawner.SpawnPlayers();
+        PlayerList = playerSpawner.GetPlayerControllerList();
         isPlaying = true;
         startMenuCanvas.gameObject.SetActive(false);
         endMenuCanvas.gameObject.SetActive(false);
