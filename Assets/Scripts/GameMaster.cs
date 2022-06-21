@@ -169,6 +169,15 @@ public class GameMaster : MonoBehaviour
         ResetPlayerTransform();
         ResetPlayerHp();
         ResetPlayerAttackBar();
+        ResetPlayerBeatCombo();
+    }
+
+    private void ResetPlayerBeatCombo()
+    {
+        foreach(var player in PlayerList)
+        {
+            beatManager.ResetPlayerBeatCombo(player.PlayerId);
+        }
     }
 
     private void ResetPlayerAttackBar()

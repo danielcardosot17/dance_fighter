@@ -21,6 +21,7 @@ public class BeatManager : MonoBehaviour
     private List<bool> playersPressed;
     private List<bool> playersOnTime;
     private List<TMP_Text> playerFeedbackList;
+    private List<int> playerBeatCombo;
     private float musicBpm = 0;
     private float currentBeatTime = 0;
     private float nextBeatTime = 0;
@@ -41,6 +42,11 @@ public class BeatManager : MonoBehaviour
         playerFeedbackList = new List<TMP_Text>();
         playerFeedbackList.Add(player1Feedback);
         playerFeedbackList.Add(player2Feedback);
+        
+        playerBeatCombo = new List<int>();
+        playerBeatCombo.Add(0);
+        playerBeatCombo.Add(0);
+
         ChangeColor(beatCenterAnimator.GetComponent<Image>(), beatOriginalColor);
         ChangeColor(player1BeatAnimator.GetComponent<Image>(), beatOriginalColor);
         ChangeColor(player2BeatAnimator.GetComponent<Image>(), beatOriginalColor);
@@ -144,17 +150,31 @@ public class BeatManager : MonoBehaviour
         tMP_Text.text = text;
     }
 
+    public void ResetPlayerBeatCombo(int playerId)
+    {
+        playerBeatCombo[playerId] = 0;
+    }
+
+    private void IncreaseBeatCombo(int playerId)
+    {
+        playerBeatCombo[playerId]++;
+    }
+
     private void NotOnTimeBeat(int playerId)
     {
+        ResetPlayerBeatCombo(playerId);
+
         ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatWrongColor);
-        ChangeFeedbackText(playerFeedbackList[playerId], "MISS");
+        ChangeFeedbackText(playerFeedbackList[playerId], playerBeatCombo[playerId].ToString());
 
         attackManager.ResetBeatCounter(playerId);
     }
 
     private void OnTimeBeat(int playerId)
     {
+        IncreaseBeatCombo(playerId);
+
         ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatRightColor);
-        ChangeFeedbackText(playerFeedbackList[playerId], "NICE");
+        ChangeFeedbackText(playerFeedbackList[playerId], playerBeatCombo[playerId].ToString());
     }
 }
