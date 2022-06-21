@@ -960,7 +960,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26352
+  m_Name: pb_Mesh26356
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2408,6 +2408,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5706554777567514633, guid: 21f83b8daf5da884189312ec4340c23c, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21f83b8daf5da884189312ec4340c23c, type: 3}
 --- !u!1001 &5943505203954975718
@@ -2627,6 +2631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8326516360892756328, guid: c118eb1f1b6becf4e971742205b4266a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c118eb1f1b6becf4e971742205b4266a, type: 3}
 --- !u!1001 &8587936825028895018
@@ -2820,6 +2828,22 @@ PrefabInstance:
     - target: {fileID: 8706385904344861892, guid: 21efa6898b790e140b236776ebf07540, type: 3}
       propertyPath: m_Name
       value: BeatScrollerCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706385906233226609, guid: 21efa6898b790e140b236776ebf07540, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706385906233226609, guid: 21efa6898b790e140b236776ebf07540, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706385906233226609, guid: 21efa6898b790e140b236776ebf07540, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706385906233226609, guid: 21efa6898b790e140b236776ebf07540, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21efa6898b790e140b236776ebf07540, type: 3}
