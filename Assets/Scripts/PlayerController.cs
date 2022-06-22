@@ -128,20 +128,23 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
         isEndgame = true;
         isWinner = false;
-        playerAnimator.SetBool("isWinner", isWinner);
+        playerAnimator.SetBool("isAttacking", isAttacking);
         playerAnimator.SetBool("isEndgame", isEndgame);
+        playerAnimator.SetBool("isWinner", isWinner);
         playerAnimator.SetInteger("defeatNumber", randomInt);
         playerAnimator.SetTrigger("defeat");
     }
 
     public void PlayRandomWinnerAnimation()
     {
+        Debug.Log("AAAAAAAAAAAA");
         var randomInt = UnityEngine.Random.Range(0, gameMaster.NumberOfVictoryAnimations);
         isAttacking = false;
         isEndgame = true;
         isWinner = true;
-        playerAnimator.SetBool("isWinner", isWinner);
+        playerAnimator.SetBool("isAttacking", isAttacking);
         playerAnimator.SetBool("isEndgame", isEndgame);
+        playerAnimator.SetBool("isWinner", isWinner);
         playerAnimator.SetInteger("victoryNumber", randomInt);
         playerAnimator.SetTrigger("victory");
     }

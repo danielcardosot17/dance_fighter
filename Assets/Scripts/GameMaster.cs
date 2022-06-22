@@ -166,7 +166,7 @@ public class GameMaster : MonoBehaviour
 
     private void PlayLoserAnimation(int loserId)
     {
-        PlayerList[loserId].PlayRandomLoserAnimation();
+        // PlayerList[loserId].PlayRandomLoserAnimation();
     }
 
     private void PlayWinnerAnimation(int winnerId)
@@ -220,6 +220,7 @@ public class GameMaster : MonoBehaviour
             audioManager.Pause();
             fightTimer.PauseTimer();
             fightTimer.PauseCountdown();
+            beatManager.PauseBeatCenter();
             foreach(var player in PlayerList)
             {
                 player.DisablePlayerInput();
@@ -238,6 +239,7 @@ public class GameMaster : MonoBehaviour
             audioManager.UnPause();
             fightTimer.StartTimer();
             fightTimer.StartCountdown();
+            beatManager.UnPauseBeatCenter();
             foreach(var player in PlayerList)
             {
                 player.DisableUIInput();

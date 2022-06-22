@@ -23,6 +23,10 @@ public class BeatManager : MonoBehaviour
     private List<TMP_Text> playerFeedbackList;
     private List<int> playerBeatCombo;
     private float musicBpm = 0;
+    private float musicLength = 0;
+    private float musicStartTime = 0;
+    private float pauseTime = 0;
+    private float timePlayed = 0;
     private float currentBeatTime = 0;
     private float nextBeatTime = 0;
 
@@ -54,19 +58,22 @@ public class BeatManager : MonoBehaviour
     
 
 
-    public void StartBeatScroller(float soundBpm, float initialBeatTime, float musicLength)
+    public void StartBeatScroller(float soundBpm, float initialBeatTime, float soundLength)
     {
         musicBpm = soundBpm;
-        StartBeatCenter(soundBpm, initialBeatTime, musicLength);
+        musicLength = soundLength;
+        timePlayed = 0; // rest time played
+        StartBeatCenter(soundBpm, initialBeatTime, soundLength);
     }
 
-    private void StartBeatCenter(float soundBpm, float initialBeatTime, float musicLength)
+    private void StartBeatCenter(float soundBpm, float initialBeatTime, float soundLength)
     {
-        StartCoroutine(DoAfterTimeCoroutine(initialBeatTime * 60/soundBpm,() => {
+        musicStartTime = Time.time;
+        StartCoroutine(DoAfterTimeCoroutine(initialBeatTime,() => {
             StartCoroutine(PulseWithBpmCoroutine(soundBpm));
         }));
-        StartCoroutine(DoAfterTimeCoroutine(musicLength,() => {
-            StopAllCoroutines();
+        StartCoroutine(DoAfterTimeCoroutine(soundLength,() => {
+            PauseBeatCenter();
         }));
     }
 
@@ -176,5 +183,23 @@ public class BeatManager : MonoBehaviour
 
         ChangeColor(playerBeatAnimatorList[playerId].GetComponent<Image>(), beatRightColor);
         ChangeFeedbackText(playerFeedbackList[playerId], playerBeatCombo[playerId].ToString());
+    }
+
+    public void PauseBeatCenter()
+    {
+        pauseTime = Time.time;
+        timePlayed += (pauseTime - musicStartTime);
+        StopAllCoroutines();
+        Debug.Log("time played");
+        Debug.Log(timePlayed);
+        Debug.Log("time remainig");
+        Debug.Log(musicLength - timePlayed);
+    }
+
+    public void UnPauseBeatCenter()
+    {
+        var beatDelay = (nextBeatTime >= pauseTime ) ? (nextBeatTime - pauseTime): (pauseTime - nextBeatTime);
+
+        StartBeatCenter(musicBpm, beatDelay, (musicLength - timePlayed));
     }
 }
