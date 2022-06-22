@@ -2907,4 +2907,4 @@ MonoBehaviour:
   player2HealthBar: {fileID: 152292498}
   player1HpText: {fileID: 157755801}
   player2HpText: {fileID: 786679709}
-  enemyInitialHealth: 40
+  enemyInitialHealth: 10

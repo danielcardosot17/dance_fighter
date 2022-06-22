@@ -137,7 +137,6 @@ public class PlayerController : MonoBehaviour
 
     public void PlayRandomWinnerAnimation()
     {
-        Debug.Log("AAAAAAAAAAAA");
         var randomInt = UnityEngine.Random.Range(0, gameMaster.NumberOfVictoryAnimations);
         isAttacking = false;
         isEndgame = true;
