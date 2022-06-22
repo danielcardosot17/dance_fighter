@@ -156,12 +156,12 @@ public class GameMaster : MonoBehaviour
 
     private void PlayLoserAnimation(int loserId)
     {
-        
+        PlayerList[loserId].PlayLoserAnimation();
     }
 
     private void PlayWinnerAnimation(int winnerId)
     {
-        
+        PlayerList[winnerId].PlayWinnerAnimation();
     }
 
     private void ResetVariables()

@@ -106,6 +106,13 @@ public class PlayerController : MonoBehaviour
         uiActionMap.FindAction("UnPauseGame").performed += UnPauseGame;
         DisableUIInput();
         DisablePlayerInput();
+
+        ResetAnimatorVariables();
+    }
+
+    private void ResetAnimatorVariables()
+    {
+        isAttacking = false;
     }
 
     private void OnDisable() {
@@ -115,5 +122,15 @@ public class PlayerController : MonoBehaviour
         uiActionMap.FindAction("UnPauseGame").performed -= UnPauseGame;
         DisableUIInput();
         DisablePlayerInput();
+    }
+
+    public void PlayLoserAnimation()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void PlayWinnerAnimation()
+    {
+        throw new NotImplementedException();
     }
 }
