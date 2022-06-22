@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     private BeatManager beatManager;
     private AttackManager attackManager;
     private bool isAttacking = false;
+    private bool isEndgame = false;
+    private bool isWinner = false;
     private int playerId;
+
     public int PlayerId { get => playerId; set => playerId = value; }
     public GameMaster GameMaster { get => gameMaster; set => gameMaster = value; }
     public BeatManager BeatManager { get => beatManager; set => beatManager = value; }
@@ -110,11 +113,6 @@ public class PlayerController : MonoBehaviour
         ResetAnimatorVariables();
     }
 
-    private void ResetAnimatorVariables()
-    {
-        isAttacking = false;
-    }
-
     private void OnDisable() {
         playerActionMap.FindAction("Attack").performed -= Attack;
         playerActionMap.FindAction("Beat").performed -= BeatSync;
@@ -124,13 +122,48 @@ public class PlayerController : MonoBehaviour
         DisablePlayerInput();
     }
 
-    public void PlayLoserAnimation()
+    public void PlayRandomLoserAnimation()
     {
-        throw new NotImplementedException();
+        var randomInt = UnityEngine.Random.Range(0, gameMaster.NumberOfDefeatAnimations);
+        isAttacking = false;
+        isEndgame = true;
+        isWinner = false;
+        playerAnimator.SetBool("isWinner", isWinner);
+        playerAnimator.SetBool("isEndgame", isEndgame);
+        playerAnimator.SetInteger("defeatNumber", randomInt);
+        playerAnimator.SetTrigger("defeat");
     }
 
-    public void PlayWinnerAnimation()
+    public void PlayRandomWinnerAnimation()
     {
-        throw new NotImplementedException();
+        var randomInt = UnityEngine.Random.Range(0, gameMaster.NumberOfVictoryAnimations);
+        isAttacking = false;
+        isEndgame = true;
+        isWinner = true;
+        playerAnimator.SetBool("isWinner", isWinner);
+        playerAnimator.SetBool("isEndgame", isEndgame);
+        playerAnimator.SetInteger("victoryNumber", randomInt);
+        playerAnimator.SetTrigger("victory");
+    }
+
+    public void PlayRandomAttackAnimation(string typeOfAttack, int randomInt)
+    {
+        isAttacking = true;
+        playerAnimator.SetBool("isAttacking", isAttacking);
+        playerAnimator.SetInteger("attackNumber", randomInt);
+        playerAnimator.SetTrigger(typeOfAttack);
+    }
+
+    public void AttackAnimationFinished()
+    {
+        isAttacking = false;
+        playerAnimator.SetBool("isAttacking", isAttacking);
+    }
+
+    private void ResetAnimatorVariables()
+    {
+        isAttacking = false;
+        isEndgame = false;
+        isWinner = false;
     }
 }

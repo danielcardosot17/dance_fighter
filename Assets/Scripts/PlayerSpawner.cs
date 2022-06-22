@@ -16,6 +16,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private GameMaster gameMaster;
     [SerializeField] private BeatManager beatManager;
     [SerializeField] private AttackManager attackManager;
+    [SerializeField] private GameEventSO animationFinishedEvent;
     
     private List<string> controlSchemeList;
     private List<int> playerPrefabIndexList;
@@ -46,9 +47,19 @@ public class PlayerSpawner : MonoBehaviour
             newPlayerGO.transform.rotation = spawnPoints[i].rotation;
             AddPlayerController(newPlayerGO, i);
             AddAnimatorController(newPlayerGO);
+            AddAnimationFinishedEventListener(newPlayerGO);
             players.Add(newPlayerGO);
             gameMaster.PlayerList.Add(newPlayerGO.GetComponent<PlayerController>());
         }
+    }
+
+    private void AddAnimationFinishedEventListener(GameObject newPlayerGO)
+    {
+        var listener = newPlayerGO.AddComponent<GameEventListener>();
+        listener.Event = animationFinishedEvent;
+        animationFinishedEvent.RegisterListener(listener);
+        listener.Response = new UnityEvent();
+        listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().AttackAnimationFinished);
     }
 
     public List<PlayerController> GetPlayerControllerList()

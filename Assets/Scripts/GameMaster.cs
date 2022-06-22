@@ -16,8 +16,18 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private AttackManager attackManager;
     [SerializeField] private HealthManager healthManager;
     [SerializeField] private TMP_Text endMenuText;
+    [SerializeField] private int numberOfVictoryAnimations;
+    [SerializeField] private int numberOfDefeatAnimations;
+    [SerializeField] private int numberOfAttacksLightAnimations;
+    [SerializeField] private int numberOfAttacksMediumAnimations;
+    [SerializeField] private int numberOfAttacksHeavyAnimations;
     private List<PlayerController> playerList;
     public List<PlayerController> PlayerList { get => playerList; set => playerList = value; }
+    public int NumberOfVictoryAnimations { get => numberOfVictoryAnimations; set => numberOfVictoryAnimations = value; }
+    public int NumberOfDefeatAnimations { get => numberOfDefeatAnimations; set => numberOfDefeatAnimations = value; }
+    public int NumberOfAttacksLightAnimations { get => numberOfAttacksLightAnimations; set => numberOfAttacksLightAnimations = value; }
+    public int NumberOfAttacksMediumAnimations { get => numberOfAttacksMediumAnimations; set => numberOfAttacksMediumAnimations = value; }
+    public int NumberOfAttacksHeavyAnimations { get => numberOfAttacksHeavyAnimations; set => numberOfAttacksHeavyAnimations = value; }
 
     private FightTimer fightTimer;
     private bool isPlaying = false;
@@ -108,10 +118,10 @@ public class GameMaster : MonoBehaviour
         fightTimer.StartTimer();
     }
 
-    private int ChooseRandomMusicIndex()
-    {
-       return UnityEngine.Random.Range(0, audioManager.GetSoundCount()); 
-    }
+    // private int ChooseRandomMusicIndex()
+    // {
+    //    return UnityEngine.Random.Range(0, audioManager.GetSoundCount()); 
+    // }
 
     public void EndGame()
     {
@@ -156,12 +166,12 @@ public class GameMaster : MonoBehaviour
 
     private void PlayLoserAnimation(int loserId)
     {
-        PlayerList[loserId].PlayLoserAnimation();
+        PlayerList[loserId].PlayRandomLoserAnimation();
     }
 
     private void PlayWinnerAnimation(int winnerId)
     {
-        PlayerList[winnerId].PlayWinnerAnimation();
+        PlayerList[winnerId].PlayRandomWinnerAnimation();
     }
 
     private void ResetVariables()
