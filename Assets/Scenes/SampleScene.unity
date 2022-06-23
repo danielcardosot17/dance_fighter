@@ -1492,6 +1492,18 @@ PrefabInstance:
       propertyPath: numberOfVictoryAnimations
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1595696508159635726, guid: 689502ee5c58deb4aafba1366198c268, type: 3}
+      propertyPath: numberOfAttacksHeavyAnimations
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595696508159635726, guid: 689502ee5c58deb4aafba1366198c268, type: 3}
+      propertyPath: numberOfAttacksLightAnimations
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595696508159635726, guid: 689502ee5c58deb4aafba1366198c268, type: 3}
+      propertyPath: numberOfAttacksMediumAnimations
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 689502ee5c58deb4aafba1366198c268, type: 3}
 --- !u!1001 &1620882651465005058

@@ -41,13 +41,24 @@ public class PlayerController : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext obj)
     {
-        isAttacking = !isAttacking;
-        playerAnimator.SetBool("isAttacking", isAttacking);
-
         BeatManager.PlayerBeatAnimation(PlayerId);
         if(BeatManager.CheckIfPlayerBeatIsOnTime(PlayerId))
         {
-            AttackManager.PlayerAttack(PlayerId);
+            if(AttackManager.IsPlayerAbleToAttack(PlayerId))
+            {
+                var attackType = AttackManager.GetAttackType(PlayerId);
+                Debug.Log("attackType");
+                Debug.Log(attackType);
+                var numberOfAnimations = gameMaster.GetNumberOfAttackAnimations(attackType);
+                Debug.Log("numberOfAnimations");
+                Debug.Log(numberOfAnimations);
+                Debug.Log("isAttacking");
+                Debug.Log(isAttacking);
+                var randomInt = UnityEngine.Random.Range(0, numberOfAnimations);
+
+                PlayAttackAnimation(attackType, randomInt);
+                AttackManager.PlayerAttack(PlayerId);
+            }
         }
         else
         {
@@ -122,9 +133,8 @@ public class PlayerController : MonoBehaviour
         DisablePlayerInput();
     }
 
-    public void PlayRandomLoserAnimation()
+    public void PlayLoserAnimation(int randomInt)
     {
-        var randomInt = UnityEngine.Random.Range(0, gameMaster.NumberOfDefeatAnimations);
         isAttacking = false;
         isEndgame = true;
         isWinner = false;
@@ -135,9 +145,8 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetTrigger("defeat");
     }
 
-    public void PlayRandomWinnerAnimation()
+    public void PlayWinnerAnimation(int randomInt)
     {
-        var randomInt = UnityEngine.Random.Range(0, gameMaster.NumberOfVictoryAnimations);
         isAttacking = false;
         isEndgame = true;
         isWinner = true;
@@ -148,7 +157,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetTrigger("victory");
     }
 
-    public void PlayRandomAttackAnimation(string typeOfAttack, int randomInt)
+    public void PlayAttackAnimation(string typeOfAttack, int randomInt)
     {
         isAttacking = true;
         playerAnimator.SetBool("isAttacking", isAttacking);

@@ -26,6 +26,31 @@ public class AttackManager : MonoBehaviour
         playerBeatCounter.Add(0);
     }
 
+    public bool IsPlayerAbleToAttack(int playerId)
+    {
+        return playerBeatCounter[playerId] > 0;
+    }
+
+    public string GetAttackType(int playerId)
+    {
+        if(playerBeatCounter[playerId] == 3)
+        {
+            return "attackHeavy";
+        }
+        else if(playerBeatCounter[playerId] == 2)
+        {
+            return "attackMedium";
+        }
+        else if(playerBeatCounter[playerId] == 1)
+        {
+            return "attackLight";
+        }
+        else
+        {
+            return "";
+        }
+    }
+
     public void PlayerAttack(int playerId)
     {
         if(playerBeatCounter[playerId] > 0)

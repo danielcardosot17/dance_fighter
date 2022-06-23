@@ -190,10 +190,6 @@ public class BeatManager : MonoBehaviour
         pauseTime = Time.time;
         timePlayed += (pauseTime - musicStartTime);
         StopAllCoroutines();
-        Debug.Log("time played");
-        Debug.Log(timePlayed);
-        Debug.Log("time remainig");
-        Debug.Log(musicLength - timePlayed);
     }
 
     public void UnPauseBeatCenter()

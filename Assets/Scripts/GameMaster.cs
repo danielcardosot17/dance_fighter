@@ -31,6 +31,27 @@ public class GameMaster : MonoBehaviour
 
     private FightTimer fightTimer;
     private bool isPlaying = false;
+
+    public int GetNumberOfAttackAnimations(string attackType)
+    {
+        if(attackType.Equals("attackLight"))
+        {
+            return NumberOfAttacksLightAnimations;
+        }
+        else if(attackType.Equals("attackMedium"))
+        {
+            return NumberOfAttacksMediumAnimations;
+        }
+        else if(attackType.Equals("attackHeavy"))
+        {
+            return NumberOfAttacksHeavyAnimations;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     private int chosenMusicIndex = 0;
 
 
@@ -166,12 +187,14 @@ public class GameMaster : MonoBehaviour
 
     private void PlayLoserAnimation(int loserId)
     {
-        PlayerList[loserId].PlayRandomLoserAnimation();
+        var randomInt = UnityEngine.Random.Range(0, NumberOfDefeatAnimations);
+        PlayerList[loserId].PlayLoserAnimation(randomInt);
     }
 
     private void PlayWinnerAnimation(int winnerId)
     {
-        PlayerList[winnerId].PlayRandomWinnerAnimation();
+        var randomInt = UnityEngine.Random.Range(0, NumberOfVictoryAnimations);
+        PlayerList[winnerId].PlayWinnerAnimation(randomInt);
     }
 
     private void ResetVariables()
