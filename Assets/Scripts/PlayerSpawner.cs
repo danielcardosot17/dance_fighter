@@ -9,14 +9,13 @@ public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> playerPrefabs;
     [SerializeField] private InputActionAsset controls; 
-    [SerializeField] private List<GameEventSO> playerBeatEvents;
-    [SerializeField] private List<GameEventSO> playerAttackEvents;
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private RuntimeAnimatorController animatorController;
     [SerializeField] private GameMaster gameMaster;
     [SerializeField] private BeatManager beatManager;
     [SerializeField] private AttackManager attackManager;
-    [SerializeField] private GameEventSO animationFinishedEvent;
+    [SerializeField] private List<GameEventSO> animationFinishedEvents;
+    [SerializeField][Range(0.1f, 1.0f)] private float resetDuration = 0.5f;
     
     private List<string> controlSchemeList;
     private List<int> playerPrefabIndexList;
@@ -46,18 +45,18 @@ public class PlayerSpawner : MonoBehaviour
             newPlayerGO.transform.position = spawnPoints[i].position;
             newPlayerGO.transform.rotation = spawnPoints[i].rotation;
             AddPlayerController(newPlayerGO, i);
-            AddAnimatorController(newPlayerGO);
-            AddAnimationFinishedEventListener(newPlayerGO);
+            AddAnimatorController(newPlayerGO, i);
+            AddAnimationFinishedEventListener(newPlayerGO, i);
             players.Add(newPlayerGO);
             gameMaster.PlayerList.Add(newPlayerGO.GetComponent<PlayerController>());
         }
     }
 
-    private void AddAnimationFinishedEventListener(GameObject newPlayerGO)
+    private void AddAnimationFinishedEventListener(GameObject newPlayerGO, int playerId)
     {
         var listener = newPlayerGO.AddComponent<GameEventListener>();
-        listener.Event = animationFinishedEvent;
-        animationFinishedEvent.RegisterListener(listener);
+        listener.Event = animationFinishedEvents[playerId];
+        animationFinishedEvents[playerId].RegisterListener(listener);
         listener.Response = new UnityEvent();
         listener.Response.AddListener(newPlayerGO.GetComponent<PlayerController>().AttackAnimationFinished);
     }
@@ -72,10 +71,12 @@ public class PlayerSpawner : MonoBehaviour
         return playerControllerList;
     }
 
-    private void AddAnimatorController(GameObject newPlayerGO)
+    private void AddAnimatorController(GameObject newPlayerGO, int playerId)
     {
         var animator = newPlayerGO.GetComponentInChildren<Animator>();
         animator.runtimeAnimatorController = animatorController;
+        var controller = animator.gameObject.AddComponent<AnimatorPositionController>();
+        controller.AnimationFinishedEvent = animationFinishedEvents[playerId];
     }
 
     private void AddPlayerController(GameObject newPlayerGO, int playerId)
@@ -85,6 +86,7 @@ public class PlayerSpawner : MonoBehaviour
         newPlayer.BeatManager = beatManager;
         newPlayer.GameMaster = gameMaster;
         newPlayer.AttackManager = attackManager;
+        newPlayer.ResetDuration = resetDuration;
         newPlayer.Initialize();
     }
 
@@ -92,7 +94,7 @@ public class PlayerSpawner : MonoBehaviour
     {
         Destroy(playerPrefabList[playerIndex]);
         var preview = Instantiate(playerPrefabs[modelIndex], spawnPoints[playerIndex].position, spawnPoints[playerIndex].rotation);
-        AddAnimatorController(preview);
+        AddAnimatorController(preview, playerIndex);
         playerPrefabList[playerIndex] = preview;
     }
 

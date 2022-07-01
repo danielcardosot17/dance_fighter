@@ -16,11 +16,15 @@ public class PlayerController : MonoBehaviour
     private bool isEndgame = false;
     private bool isWinner = false;
     private int playerId;
+    private float resetDuration;
+
+    // private bool mayResetAnimatorTransform = false;
 
     public int PlayerId { get => playerId; set => playerId = value; }
     public GameMaster GameMaster { get => gameMaster; set => gameMaster = value; }
     public BeatManager BeatManager { get => beatManager; set => beatManager = value; }
     public AttackManager AttackManager { get => attackManager; set => attackManager = value; }
+    public float ResetDuration { get => resetDuration; set => resetDuration = value; }
 
     private void Awake() {
         playerAnimator = GetComponentInChildren<Animator>();
@@ -49,11 +53,9 @@ public class PlayerController : MonoBehaviour
                 var attackType = AttackManager.GetAttackType(PlayerId);
                 var numberOfAnimations = gameMaster.GetNumberOfAttackAnimations(attackType);
                 var randomInt = UnityEngine.Random.Range(0, numberOfAnimations);
-                Debug.Log("randomInt");
-                Debug.Log(randomInt);
-                Debug.Log(playerAnimator.gameObject.name);
+                // Debug.Log("AttackAnimation ID");
+                // Debug.Log(randomInt);
                 
-
                 PlayAttackAnimation(attackType, randomInt);
                 AttackManager.PlayerAttack(PlayerId);
             }
@@ -153,6 +155,9 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("isWinner", isWinner);
         playerAnimator.SetInteger("victoryNumber", randomInt);
         playerAnimator.SetTrigger("victory");
+        
+        // Debug.Log("Victory Animation ID");
+        // Debug.Log(randomInt);
     }
 
     public void PlayAttackAnimation(string typeOfAttack, int randomInt)
@@ -167,6 +172,25 @@ public class PlayerController : MonoBehaviour
     {
         isAttacking = false;
         playerAnimator.SetBool("isAttacking", isAttacking);
+        // mayResetAnimatorTransform = true;
+        ResetAnimatorTransform();
+    }
+
+    // private void LateUpdate() {
+    //     var distance = Vector3.Distance(Vector3.zero, playerAnimator.transform.localPosition);
+    //     if(mayResetAnimatorTransform && distance > 0.1f)
+    //     {
+    //         ResetAnimatorTransform();
+    //     }
+    // }
+
+    private void ResetAnimatorTransform()
+    {
+        // mayResetAnimatorTransform = false;
+        // playerAnimator.transform.localPosition = Vector3.zero;
+        // playerAnimator.transform.localRotation = Quaternion.identity;
+        StartCoroutine(LerpPosition(Vector3.zero, ResetDuration));
+        StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), ResetDuration));
     }
 
     private void ResetAnimatorVariables()
@@ -174,5 +198,30 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
         isEndgame = false;
         isWinner = false;
+    }
+
+    IEnumerator LerpPosition(Vector3 targetPosition, float duration)
+    {
+        float time = 0;
+        Vector3 startPosition = playerAnimator.transform.localPosition;
+        while (time < duration)
+        {
+            playerAnimator.transform.localPosition = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        playerAnimator.transform.localPosition = targetPosition;
+    }
+    IEnumerator LerpFunction(Quaternion endValue, float duration)
+    {
+        float time = 0;
+        Quaternion startValue = playerAnimator.transform.localRotation;
+        while (time < duration)
+        {
+            playerAnimator.transform.localRotation = Quaternion.Lerp(startValue, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        playerAnimator.transform.localRotation = endValue;
     }
 }

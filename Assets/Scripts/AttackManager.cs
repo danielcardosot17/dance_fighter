@@ -57,7 +57,7 @@ public class AttackManager : MonoBehaviour
         {
             var damage = Mathf.Pow(2, playerBeatCounter[playerId] - 1); // damage = 1, 2, 4
             healthManager.DealDamage(playerId, damage);
-            Debug.Log("Player " + playerId.ToString() +  " deals " + damage.ToString() + " damage");
+            // Debug.Log("Player " + playerId.ToString() +  " deals " + damage.ToString() + " damage");
             ResetBeatCounter(playerId);
         }
     }
