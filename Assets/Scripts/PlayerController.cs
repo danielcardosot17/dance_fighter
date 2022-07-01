@@ -47,14 +47,12 @@ public class PlayerController : MonoBehaviour
             if(AttackManager.IsPlayerAbleToAttack(PlayerId))
             {
                 var attackType = AttackManager.GetAttackType(PlayerId);
-                Debug.Log("attackType");
-                Debug.Log(attackType);
                 var numberOfAnimations = gameMaster.GetNumberOfAttackAnimations(attackType);
-                Debug.Log("numberOfAnimations");
-                Debug.Log(numberOfAnimations);
-                Debug.Log("isAttacking");
-                Debug.Log(isAttacking);
                 var randomInt = UnityEngine.Random.Range(0, numberOfAnimations);
+                Debug.Log("randomInt");
+                Debug.Log(randomInt);
+                Debug.Log(playerAnimator.gameObject.name);
+                
 
                 PlayAttackAnimation(attackType, randomInt);
                 AttackManager.PlayerAttack(PlayerId);
