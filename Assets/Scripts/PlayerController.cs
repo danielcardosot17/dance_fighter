@@ -153,8 +153,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("isAttacking", isAttacking);
         playerAnimator.SetBool("isEndgame", isEndgame);
         playerAnimator.SetBool("isWinner", isWinner);
-        // playerAnimator.SetInteger("victoryNumber", randomInt);
-        playerAnimator.SetInteger("victoryNumber", 1);
+        playerAnimator.SetInteger("victoryNumber", randomInt);
         playerAnimator.SetTrigger("victory");
         
         // Debug.Log("Victory Animation ID");
