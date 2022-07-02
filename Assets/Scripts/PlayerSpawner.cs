@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -14,6 +15,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private GameMaster gameMaster;
     [SerializeField] private BeatManager beatManager;
     [SerializeField] private AttackManager attackManager;
+    [SerializeField] private CinemachineTargetGroup targetGroup;
     [SerializeField] private List<GameEventSO> animationFinishedEvents;
     [SerializeField][Range(0.1f, 1.0f)] private float resetDuration = 0.5f;
     
@@ -48,6 +50,11 @@ public class PlayerSpawner : MonoBehaviour
             AddAnimatorController(newPlayerGO, i);
             AddAnimationFinishedEventListener(newPlayerGO, i);
             players.Add(newPlayerGO);
+            var target = new CinemachineTargetGroup.Target();
+            target.target = newPlayerGO.GetComponentInChildren<Animator>().transform;
+            target.weight = 1;
+            target.radius = 0;
+            targetGroup.m_Targets.SetValue(target, i);
             gameMaster.PlayerList.Add(newPlayerGO.GetComponent<PlayerController>());
         }
     }
@@ -77,6 +84,11 @@ public class PlayerSpawner : MonoBehaviour
         animator.runtimeAnimatorController = animatorController;
         var controller = animator.gameObject.AddComponent<AnimatorPositionController>();
         controller.AnimationFinishedEvent = animationFinishedEvents[playerId];
+
+        if(playerId == 1) //player 2 will mirror all animations
+        {
+            animator.SetBool("isMirror", true);
+        }
     }
 
     private void AddPlayerController(GameObject newPlayerGO, int playerId)
