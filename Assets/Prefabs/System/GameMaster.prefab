@@ -51,6 +51,14 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   beatManager: {fileID: 0}
   playerSpawner: {fileID: 0}
+  attackManager: {fileID: 0}
+  healthManager: {fileID: 0}
+  endMenuText: {fileID: 0}
+  numberOfVictoryAnimations: 4
+  numberOfDefeatAnimations: 8
+  numberOfAttacksLightAnimations: 5
+  numberOfAttacksMediumAnimations: 4
+  numberOfAttacksHeavyAnimations: 4
 --- !u!114 &1595696508159635720
 MonoBehaviour:
   m_ObjectHideFlags: 0

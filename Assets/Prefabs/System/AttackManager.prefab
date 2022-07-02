@@ -45,5 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beatManager: {fileID: 0}
-  player1AttackBars: []
-  player2AttackBars: []
+  healthManager: {fileID: 0}
+  player1AttackBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player2AttackBars:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  originalBarColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  readyBarColor: {r: 0.24313727, g: 0.9450981, b: 0.5254902, a: 1}

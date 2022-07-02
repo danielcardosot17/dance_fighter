@@ -60,14 +60,15 @@ MonoBehaviour:
   - {fileID: 7229141835791330301, guid: 582f0d18e64a25c4b9323804f1564c4a, type: 3}
   - {fileID: 4027291239080545901, guid: 7fa801c348e736f43b4f976dbbdd3cf7, type: 3}
   controls: {fileID: -944628639613478452, guid: a2b6ce21bd6f96c47b0d918174adfc53, type: 3}
-  playerBeatEvents:
-  - {fileID: 11400000, guid: a5b556314cd2a4d4fa53390f5c676da3, type: 2}
-  - {fileID: 11400000, guid: 514f13178fca2414c801db84db5f6d80, type: 2}
-  playerAttackEvents:
-  - {fileID: 11400000, guid: 031655f0937bbba4b83c22d9a45d09e3, type: 2}
-  - {fileID: 11400000, guid: 4ceaa751a19854d449a8817f1cd6f7fd, type: 2}
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   animatorController: {fileID: 9100000, guid: 05c6837680c532c4f98659786e57ebaf, type: 2}
   gameMaster: {fileID: 0}
+  beatManager: {fileID: 0}
+  attackManager: {fileID: 0}
+  targetGroup: {fileID: 0}
+  animationFinishedEvents:
+  - {fileID: 11400000, guid: 4d2a9fa3b0d0ec144a861ef23c650ce8, type: 2}
+  - {fileID: 11400000, guid: 954c5364eede88548a01eda144470c37, type: 2}
+  resetDuration: 0.5

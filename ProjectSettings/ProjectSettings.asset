@@ -135,7 +135,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -165,7 +166,7 @@ PlayerSettings:
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
-  stripEngineCode: 1
+  stripEngineCode: 0
   iPhoneStrippingLevel: 0
   iPhoneScriptCallOptimization: 0
   ForceInternetPermission: 0
@@ -173,8 +174,8 @@ PlayerSettings:
   CreateWallpaper: 0
   APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
-  StripUnusedMeshComponents: 1
-  VertexChannelCompressionMask: 4054
+  StripUnusedMeshComponents: 0
+  VertexChannelCompressionMask: 0
   iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 11.0
   tvOSSdkVersion: 0
@@ -702,12 +703,14 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
+    Standalone: FUSION_WEAVER
     WebGL: FUSION_WEAVER
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
-  managedStrippingLevel: {}
+  managedStrippingLevel:
+    WebGL: 1
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1
   allowUnsafeCode: 0

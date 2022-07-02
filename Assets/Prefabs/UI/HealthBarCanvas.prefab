@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.8
+  m_fontSize: 20.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.871
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.8
+  m_fontSize: 20.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
