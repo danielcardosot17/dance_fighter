@@ -84,6 +84,11 @@ public class PlayerSpawner : MonoBehaviour
         animator.runtimeAnimatorController = animatorController;
         var controller = animator.gameObject.AddComponent<AnimatorPositionController>();
         controller.AnimationFinishedEvent = animationFinishedEvents[playerId];
+
+        if(playerId == 1) //player 2 will mirror all animations
+        {
+            animator.SetBool("isMirror", true);
+        }
     }
 
     private void AddPlayerController(GameObject newPlayerGO, int playerId)
