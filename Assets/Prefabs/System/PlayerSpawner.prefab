@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2817177915363422650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2817177915363422651}
+  - component: {fileID: 424733602}
+  m_Layer: 0
+  m_Name: PlayerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2817177915363422651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817177915363422650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424733602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817177915363422650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b29496b3090fa4d95b426c6e181656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefabs:
+  - {fileID: 2250204814196927780, guid: 33331fceedf69e04794eec42f852e9be, type: 3}
+  - {fileID: 9032778899936056211, guid: e2e189601fca3e040aaddcd714a4e64a, type: 3}
+  - {fileID: 1634922171330981316, guid: ee85b6aae6b2cbc4b97f7cabbaff533c, type: 3}
+  - {fileID: 2078054007692116563, guid: 1b04061a6dd060043bbc7f533fb87f6e, type: 3}
+  - {fileID: 1539656777377496162, guid: 06d15bdb2228bfb40bcec4f4e89a9aee, type: 3}
+  - {fileID: 5046357292227303657, guid: 8a6326dc0c68dfc4e869160eb8d1341d, type: 3}
+  - {fileID: 718910716010083691, guid: 1bb225d6d8688524f896c75ba6240747, type: 3}
+  - {fileID: 362280373875941498, guid: 12645bec383df154f80a79411d78cb08, type: 3}
+  - {fileID: 5319946686340091219, guid: 2e815bcbc5f03a54ebf16e5c81cb6cc7, type: 3}
+  - {fileID: 6290770666682354838, guid: 05b111da2b237914f9c84342f3bed604, type: 3}
+  - {fileID: 3725689667344190925, guid: f684f27bdf61c2140a76f0c03193e00d, type: 3}
+  - {fileID: 839988002001381647, guid: 0fb463a77272d364a8db5f2d88565c9a, type: 3}
+  - {fileID: 7229141835791330301, guid: 582f0d18e64a25c4b9323804f1564c4a, type: 3}
+  - {fileID: 4027291239080545901, guid: 7fa801c348e736f43b4f976dbbdd3cf7, type: 3}
+  controls: {fileID: -944628639613478452, guid: a2b6ce21bd6f96c47b0d918174adfc53, type: 3}
+  playerBeatEvents:
+  - {fileID: 11400000, guid: a5b556314cd2a4d4fa53390f5c676da3, type: 2}
+  - {fileID: 11400000, guid: 514f13178fca2414c801db84db5f6d80, type: 2}
+  playerAttackEvents:
+  - {fileID: 11400000, guid: 031655f0937bbba4b83c22d9a45d09e3, type: 2}
+  - {fileID: 11400000, guid: 4ceaa751a19854d449a8817f1cd6f7fd, type: 2}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  animatorController: {fileID: 9100000, guid: 05c6837680c532c4f98659786e57ebaf, type: 2}
+  gameMaster: {fileID: 0}

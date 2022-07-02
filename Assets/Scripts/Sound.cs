@@ -1,5 +1,6 @@
 using UnityEngine.Audio;
 using UnityEngine;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class Sound
@@ -18,4 +19,10 @@ public class Sound
     public float pitch;
 
     public bool loop;
+    
+    public float bpm;
+    
+    [Range(0f,1f)] public float initialBeatTime;
+
+    public List<float> beatTimes;
 }
