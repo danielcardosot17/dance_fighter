@@ -17,6 +17,7 @@ public class BeatManager : MonoBehaviour
     [SerializeField] private Color beatOriginalColor;
     [SerializeField] private Color beatRightColor;
     [SerializeField] private Color beatWrongColor;
+    [SerializeField] private TMP_Text beatDiffText;
     private List<Animator> playerBeatAnimatorList;
     private List<bool> playersPressed;
     private List<bool> playersOnTime;
@@ -106,6 +107,8 @@ public class BeatManager : MonoBehaviour
 
     public void MarkBeatCenterTime()
     {
+        var diff = Time.time - currentBeatTime;
+        beatDiffText.text = diff.ToString("F3");
         currentBeatTime = Time.time;
         nextBeatTime = currentBeatTime + 60/musicBpm;
         StartCoroutine(DoAfterTimeCoroutine((60/musicBpm) * beatDifferencePercentage,() => {

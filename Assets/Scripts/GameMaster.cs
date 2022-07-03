@@ -58,6 +58,7 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 30;
         PlayerList = new List<PlayerController>();
         fightTimer = GetComponent<FightTimer>();
         startMenuCanvas.gameObject.SetActive(true);

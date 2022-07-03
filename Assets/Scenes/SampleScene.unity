@@ -459,7 +459,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
   m_PrefabInstance: {fileID: 782474423985975533}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 938351514}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4dc0cd5ee8ede449adca89398b09a87, type: 3}
@@ -481,6 +481,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &938351514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782474424795440846, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+  m_PrefabInstance: {fileID: 782474423985975533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &938351516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938351514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bdd92f14c6f9140a6b5a28ea91ca71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayText: {fileID: 2061824213}
+  pollingTime: 1
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +577,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.017848605, y: -0.0000000010752276, z: 1.9194368e-11, w: 0.99984074}
+  m_LocalRotation: {x: 0.017848605, y: 0.0000000010752276, z: -1.9194368e-11, w: 0.99984074}
   m_LocalPosition: {x: 0, y: 1.25, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -708,7 +727,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh63980
+  m_Name: pb_Mesh86934
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1235,7 +1254,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662499181}
-  m_LocalRotation: {x: 0.017848605, y: -0.0000000010752276, z: 1.9194368e-11, w: 0.99984074}
+  m_LocalRotation: {x: 0.017848605, y: 0.0000000010752276, z: -1.9194368e-11, w: 0.99984074}
   m_LocalPosition: {x: 0, y: 1.25, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1249,6 +1268,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1620882653476499971, guid: 6f37a0e5d728e30489f6048afc276513, type: 3}
   m_PrefabInstance: {fileID: 1620882651465005058}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2061824213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2061824213, guid: 14bd35ac1056cf146ad377e5b168d3c2, type: 3}
+  m_PrefabInstance: {fileID: 2627935075316601857}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &782474423985975533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1300,6 +1330,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
+      propertyPath: beatDiffText
+      value: 
+      objectReference: {fileID: 2627935075316601858}
     - target: {fileID: 782474424795440843, guid: b6dccc5412f23d24280d1d6702fc4a8f, type: 3}
       propertyPath: attackManager
       value: 
@@ -1682,6 +1716,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14bd35ac1056cf146ad377e5b168d3c2, type: 3}
+--- !u!114 &2627935075316601858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8200996845848898405, guid: 14bd35ac1056cf146ad377e5b168d3c2, type: 3}
+  m_PrefabInstance: {fileID: 2627935075316601857}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2817177915242781210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2024,6 +2069,62 @@ PrefabInstance:
     - target: {fileID: 2997799639968299023, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[0].bpm
+      value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[1].bpm
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[2].bpm
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 43a3a1c0b76d55b498d4e986f3021d18, type: 3}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: Benedek - CRUZIN
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: ceb36e2c21794b94193fc02f388e76c6, type: 3}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[1].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: Black Ant - government funded weed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: aac4817f563f78141963295f02dc25e4, type: 3}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: 16446__kkz__treaspassa
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2997799639968299026, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 061c4821179d21b4d8df067fc0b696da, type: 3}
