@@ -58,14 +58,10 @@ public class GameMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 30;
+        // Application.targetFrameRate = 30;
         PlayerList = new List<PlayerController>();
         fightTimer = GetComponent<FightTimer>();
-        startMenuCanvas.gameObject.SetActive(true);
-        endMenuCanvas.gameObject.SetActive(false);
-        pauseGameCanvas.gameObject.SetActive(false);
-        playerSpawner.PreviewModel(0,0);
-        playerSpawner.PreviewModel(1,0);
+        RestartGame();
     }
 
     // Update is called once per frame
@@ -98,6 +94,16 @@ public class GameMaster : MonoBehaviour
         ResetCountdownTimer();
         StartTimer();
         StartCountdown();
+    }
+
+    public void RestartGame()
+    {
+        startMenuCanvas.gameObject.SetActive(true);
+        endMenuCanvas.gameObject.SetActive(false);
+        pauseGameCanvas.gameObject.SetActive(false);
+        playerSpawner.DestroyPlayers();
+        playerSpawner.PreviewModel(0,0);
+        playerSpawner.PreviewModel(1,0);
     }
 
     private void StartCountdown()
