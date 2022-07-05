@@ -80,11 +80,18 @@ public class BeatManager : MonoBehaviour
 
     private IEnumerator PulseWithBpmCoroutine(float bpm)
     {
+        float time = 0;
         while(true)
         {
-            BeatCenterAnimation();
-            MarkBeatCenterTime();
-            yield return new WaitForSeconds(60/bpm);
+            time += Time.deltaTime;
+            if(time >= 60/bpm)
+            {
+                BeatCenterAnimation();
+                MarkBeatCenterTime();
+                time -= 60/bpm;
+            }
+            // yield return new WaitForSeconds(60/bpm);
+            yield return null;
         }
     }
     
